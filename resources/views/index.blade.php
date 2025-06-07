@@ -1,32 +1,27 @@
 @extends('layout.baseApp')
 @section('content')
     <main class="main">
-
-        <!-- Hero Section -->
         <section id="hero" class="hero section dark-background">
 
             <img src="{{ URL::asset('assets/img/hero-bg.jpg') }}" alt="" data-aos="fade-in" class="">
 
             <div class="container" data-aos="fade-up" data-aos-delay="100">
-                <h2>Alex Smith</h2>
-                <p>I'm <span class="typed"
-                        data-typed-items="Designer, Developer, Freelancer, Photographer">Designer</span><span
-                        class="typed-cursor typed-cursor--blink" aria-hidden="true"></span><span
+                <h2>Avinash Kumar</h2>
+                <p>I'm <span class="typed" data-typed-items="Website Designer, Website Developer">Website
+                        Developer</span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span><span
                         class="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>
             </div>
 
-        </section><!-- /Hero Section -->
+        </section>
 
         <!-- About Section -->
         <section id="about" class="about section">
-
-            <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
                 <h2>About</h2>
                 <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
                     consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat
                     sit in iste officiis commodi quidem hic quas.</p>
-            </div><!-- End Section Title -->
+            </div>
 
             <div class="container" data-aos="fade-up" data-aos-delay="100">
 
@@ -47,7 +42,8 @@
                                     <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>1 May
                                             1995</span></li>
                                     <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong>
-                                        <span>www.example.com</span></li>
+                                        <span>www.example.com</span>
+                                    </li>
                                     <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+123 456
                                             7890</span></li>
                                     <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>New York,
@@ -60,9 +56,11 @@
                                     <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>Master</span>
                                     </li>
                                     <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong>
-                                        <span>email@example.com</span></li>
+                                        <span>email@example.com</span>
+                                    </li>
                                     <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong>
-                                        <span>Available</span></li>
+                                        <span>Available</span>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -320,7 +318,8 @@
 
                         <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
                             <div class="portfolio-content h-100">
-                                <img src="{{ URL::asset('assets/img/portfolio/app-1.jpg') }}" class="img-fluid" alt="">
+                                <img src="{{ URL::asset('assets/img/portfolio/app-1.jpg') }}" class="img-fluid"
+                                    alt="">
                                 <div class="portfolio-info">
                                     <h4>App 1</h4>
                                     <p>Lorem ipsum, dolor sit amet consectetur</p>
@@ -335,7 +334,8 @@
 
                         <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
                             <div class="portfolio-content h-100">
-                                <img src="{{ URL::asset('assets/img/portfolio/product-1.jpg') }}" class="img-fluid" alt="">
+                                <img src="{{ URL::asset('assets/img/portfolio/product-1.jpg') }}" class="img-fluid"
+                                    alt="">
                                 <div class="portfolio-info">
                                     <h4>Product 1</h4>
                                     <p>Lorem ipsum, dolor sit amet consectetur</p>
@@ -350,7 +350,8 @@
 
                         <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
                             <div class="portfolio-content h-100">
-                                <img src="{{ URL::asset('assets/img/portfolio/branding-1.jpg') }}" class="img-fluid" alt="">
+                                <img src="{{ URL::asset('assets/img/portfolio/branding-1.jpg') }}" class="img-fluid"
+                                    alt="">
                                 <div class="portfolio-info">
                                     <h4>Branding 1</h4>
                                     <p>Lorem ipsum, dolor sit amet consectetur</p>
@@ -365,7 +366,8 @@
 
                         <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
                             <div class="portfolio-content h-100">
-                                <img src="{{ URL::asset('assets/img/portfolio/books-1.jpg') }}" class="img-fluid" alt="">
+                                <img src="{{ URL::asset('assets/img/portfolio/books-1.jpg') }}" class="img-fluid"
+                                    alt="">
                                 <div class="portfolio-info">
                                     <h4>Books 1</h4>
                                     <p>Lorem ipsum, dolor sit amet consectetur</p>
@@ -380,7 +382,8 @@
 
                         <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
                             <div class="portfolio-content h-100">
-                                <img src="{{ URL::asset('assets/img/portfolio/app-2.jpg') }}" class="img-fluid" alt="">
+                                <img src="{{ URL::asset('assets/img/portfolio/app-2.jpg') }}" class="img-fluid"
+                                    alt="">
                                 <div class="portfolio-info">
                                     <h4>App 2</h4>
                                     <p>Lorem ipsum, dolor sit amet consectetur</p>
@@ -395,7 +398,8 @@
 
                         <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
                             <div class="portfolio-content h-100">
-                                <img src="{{ URL::asset('assets/img/portfolio/product-2.jpg') }}" class="img-fluid" alt="">
+                                <img src="{{ URL::asset('assets/img/portfolio/product-2.jpg') }}" class="img-fluid"
+                                    alt="">
                                 <div class="portfolio-info">
                                     <h4>Product 2</h4>
                                     <p>Lorem ipsum, dolor sit amet consectetur</p>
@@ -410,7 +414,8 @@
 
                         <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
                             <div class="portfolio-content h-100">
-                                <img src="{{ URL::asset('assets/img/portfolio/branding-2.jpg') }}" class="img-fluid" alt="">
+                                <img src="{{ URL::asset('assets/img/portfolio/branding-2.jpg') }}" class="img-fluid"
+                                    alt="">
                                 <div class="portfolio-info">
                                     <h4>Branding 2</h4>
                                     <p>Lorem ipsum, dolor sit amet consectetur</p>
@@ -425,7 +430,8 @@
 
                         <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
                             <div class="portfolio-content h-100">
-                                <img src="{{ URL::asset('assets/img/portfolio/books-2.jpg') }}" class="img-fluid" alt="">
+                                <img src="{{ URL::asset('assets/img/portfolio/books-2.jpg') }}" class="img-fluid"
+                                    alt="">
                                 <div class="portfolio-info">
                                     <h4>Books 2</h4>
                                     <p>Lorem ipsum, dolor sit amet consectetur</p>
@@ -440,7 +446,8 @@
 
                         <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
                             <div class="portfolio-content h-100">
-                                <img src="{{ URL::asset('assets/img/portfolio/app-3.jpg') }}" class="img-fluid" alt="">
+                                <img src="{{ URL::asset('assets/img/portfolio/app-3.jpg') }}" class="img-fluid"
+                                    alt="">
                                 <div class="portfolio-info">
                                     <h4>App 3</h4>
                                     <p>Lorem ipsum, dolor sit amet consectetur</p>
@@ -455,7 +462,8 @@
 
                         <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
                             <div class="portfolio-content h-100">
-                                <img src="{{ URL::asset('assets/img/portfolio/product-3.jpg') }}" class="img-fluid" alt="">
+                                <img src="{{ URL::asset('assets/img/portfolio/product-3.jpg') }}" class="img-fluid"
+                                    alt="">
                                 <div class="portfolio-info">
                                     <h4>Product 3</h4>
                                     <p>Lorem ipsum, dolor sit amet consectetur</p>
@@ -470,7 +478,8 @@
 
                         <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
                             <div class="portfolio-content h-100">
-                                <img src="{{ URL::asset('assets/img/portfolio/branding-3.jpg') }}" class="img-fluid" alt="">
+                                <img src="{{ URL::asset('assets/img/portfolio/branding-3.jpg') }}" class="img-fluid"
+                                    alt="">
                                 <div class="portfolio-info">
                                     <h4>Branding 3</h4>
                                     <p>Lorem ipsum, dolor sit amet consectetur</p>
@@ -485,7 +494,8 @@
 
                         <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
                             <div class="portfolio-content h-100">
-                                <img src="{{ URL::asset('assets/img/portfolio/books-3.jpg') }}" class="img-fluid" alt="">
+                                <img src="{{ URL::asset('assets/img/portfolio/books-3.jpg') }}" class="img-fluid"
+                                    alt="">
                                 <div class="portfolio-info">
                                     <h4>Books 3</h4>
                                     <p>Lorem ipsum, dolor sit amet consectetur</p>
@@ -634,8 +644,8 @@
                                         risus at semper.</span>
                                     <i class="bi bi-quote quote-icon-right"></i>
                                 </p>
-                                <img src="{{ URL::asset('assets/img/testimonials/testimonials-1.jpg') }}" class="testimonial-img"
-                                    alt="">
+                                <img src="{{ URL::asset('assets/img/testimonials/testimonials-1.jpg') }}"
+                                    class="testimonial-img" alt="">
                                 <h3>Saul Goodman</h3>
                                 <h4>Ceo &amp; Founder</h4>
                             </div>
@@ -650,8 +660,8 @@
                                         culpa.</span>
                                     <i class="bi bi-quote quote-icon-right"></i>
                                 </p>
-                                <img src="{{ URL::asset('assets/img/testimonials/testimonials-2.jpg') }}" class="testimonial-img"
-                                    alt="">
+                                <img src="{{ URL::asset('assets/img/testimonials/testimonials-2.jpg') }}"
+                                    class="testimonial-img" alt="">
                                 <h3>Sara Wilsson</h3>
                                 <h4>Designer</h4>
                             </div>
@@ -666,8 +676,8 @@
                                         minim.</span>
                                     <i class="bi bi-quote quote-icon-right"></i>
                                 </p>
-                                <img src="{{ URL::asset('assets/img/testimonials/testimonials-3.jpg') }}" class="testimonial-img"
-                                    alt="">
+                                <img src="{{ URL::asset('assets/img/testimonials/testimonials-3.jpg') }}"
+                                    class="testimonial-img" alt="">
                                 <h3>Jena Karlis</h3>
                                 <h4>Store Owner</h4>
                             </div>
@@ -682,8 +692,8 @@
                                         illum veniam.</span>
                                     <i class="bi bi-quote quote-icon-right"></i>
                                 </p>
-                                <img src="{{ URL::asset('assets/img/testimonials/testimonials-4.jpg') }}" class="testimonial-img"
-                                    alt="">
+                                <img src="{{ URL::asset('assets/img/testimonials/testimonials-4.jpg') }}"
+                                    class="testimonial-img" alt="">
                                 <h3>Matt Brandon</h3>
                                 <h4>Freelancer</h4>
                             </div>
@@ -698,8 +708,8 @@
                                         cillum quid.</span>
                                     <i class="bi bi-quote quote-icon-right"></i>
                                 </p>
-                                <img src="{{ URL::asset('assets/img/testimonials/testimonials-5.jpg') }}" class="testimonial-img"
-                                    alt="">
+                                <img src="{{ URL::asset('assets/img/testimonials/testimonials-5.jpg') }}"
+                                    class="testimonial-img" alt="">
                                 <h3>John Larson</h3>
                                 <h4>Entrepreneur</h4>
                             </div>
