@@ -30,7 +30,7 @@
                         <img src="{{ URL::asset('assets/img/my-profile-img.jpg') }}" class="img-fluid" alt="">
                     </div>
                     <div class="col-lg-8 content">
-                        <h2>UI/UX Designer &amp; Web Developer.</h2>
+                        <h2>Web Developer.</h2>
                         <p class="fst-italic py-3">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                             labore et dolore
@@ -39,24 +39,34 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <ul>
-                                    <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>1 May
-                                            1995</span></li>
+                                    <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>10 Aug
+                                            2001</span></li>
                                     <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong>
-                                        <span>www.example.com</span>
+                                        <span>www.z1iinnovation.com</span>
                                     </li>
-                                    <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+123 456
-                                            7890</span></li>
-                                    <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>New York,
-                                            USA</span></li>
+                                    <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong>
+                                        <span>+91-8650163913</span>
+                                    </li>
+                                    <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Delhi, India</span>
+                                    </li>
                                 </ul>
                             </div>
                             <div class="col-lg-6">
                                 <ul>
-                                    <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>30</span></li>
-                                    <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>Master</span>
+                                    @php
+                                        use Carbon\Carbon;
+                                        $birthdate = Carbon::createFromDate(2001, 8, 10);
+                                        $age = $birthdate->age;
+                                    @endphp
+
+                                    <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>{{ $age }}
+                                            years</span></li>
+
+                                    <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>B.Tech(Computer
+                                            Science & Engg)</span>
                                     </li>
                                     <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong>
-                                        <span>email@example.com</span>
+                                        <span>avinash8564kumar@gmail.com</span>
                                     </li>
                                     <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong>
                                         <span>Available</span>
@@ -91,7 +101,7 @@
                                 class="purecounter"></span>
                             <p><strong>Happy Clients</strong> <span>consequuntur quae</span></p>
                         </div>
-                    </div><!-- End Stats Item -->
+                    </div>
 
                     <div class="col-lg-3 col-md-6">
                         <div class="stats-item">
@@ -100,7 +110,7 @@
                                 class="purecounter"></span>
                             <p><strong>Projects</strong> <span>adipisci atque cum quia aut</span></p>
                         </div>
-                    </div><!-- End Stats Item -->
+                    </div>
 
                     <div class="col-lg-3 col-md-6">
                         <div class="stats-item">
@@ -109,7 +119,7 @@
                                 class="purecounter"></span>
                             <p><strong>Hours Of Support</strong> <span>aut commodi quaerat</span></p>
                         </div>
-                    </div><!-- End Stats Item -->
+                    </div>
 
                     <div class="col-lg-3 col-md-6">
                         <div class="stats-item">
@@ -118,107 +128,85 @@
                                 class="purecounter"></span>
                             <p><strong>Hard Workers</strong> <span>rerum asperiores dolor</span></p>
                         </div>
-                    </div><!-- End Stats Item -->
+                    </div>
 
                 </div>
 
             </div>
 
-        </section><!-- /Stats Section -->
+        </section>
 
-        <!-- Skills Section -->
+
         <section id="skills" class="skills section light-background">
 
-            <!-- Section Title -->
+
             <div class="container section-title" data-aos="fade-up">
                 <h2>Skills</h2>
                 <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-            </div><!-- End Section Title -->
-
+            </div>
             <div class="container" data-aos="fade-up" data-aos-delay="100">
-
                 <div class="row skills-content skills-animation">
-
                     <div class="col-lg-6">
-
                         <div class="progress">
                             <span class="skill"><span>HTML</span> <i class="val">100%</i></span>
                             <div class="progress-bar-wrap">
                                 <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0"
                                     aria-valuemax="100"></div>
                             </div>
-                        </div><!-- End Skills Item -->
-
+                        </div>
                         <div class="progress">
                             <span class="skill"><span>CSS</span> <i class="val">90%</i></span>
                             <div class="progress-bar-wrap">
                                 <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0"
                                     aria-valuemax="100"></div>
                             </div>
-                        </div><!-- End Skills Item -->
-
+                        </div>
                         <div class="progress">
                             <span class="skill"><span>JavaScript</span> <i class="val">75%</i></span>
                             <div class="progress-bar-wrap">
                                 <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0"
                                     aria-valuemax="100"></div>
                             </div>
-                        </div><!-- End Skills Item -->
-
+                        </div>
                     </div>
-
                     <div class="col-lg-6">
-
                         <div class="progress">
                             <span class="skill"><span>PHP</span> <i class="val">80%</i></span>
                             <div class="progress-bar-wrap">
                                 <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0"
                                     aria-valuemax="100"></div>
                             </div>
-                        </div><!-- End Skills Item -->
-
+                        </div>
                         <div class="progress">
                             <span class="skill"><span>WordPress/CMS</span> <i class="val">90%</i></span>
                             <div class="progress-bar-wrap">
                                 <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0"
                                     aria-valuemax="100"></div>
                             </div>
-                        </div><!-- End Skills Item -->
-
+                        </div>
                         <div class="progress">
                             <span class="skill"><span>Photoshop</span> <i class="val">55%</i></span>
                             <div class="progress-bar-wrap">
                                 <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0"
                                     aria-valuemax="100"></div>
                             </div>
-                        </div><!-- End Skills Item -->
-
+                        </div>
                     </div>
-
                 </div>
-
             </div>
+        </section>
 
-        </section><!-- /Skills Section -->
-
-        <!-- Resume Section -->
         <section id="resume" class="resume section">
-
-            <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
                 <h2>Resume</h2>
                 <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
                     consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat
                     sit in iste officiis commodi quidem hic quas.</p>
-            </div><!-- End Section Title -->
-
+            </div>
             <div class="container">
-
                 <div class="row">
-
                     <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
                         <h3 class="resume-title">Sumary</h3>
-
                         <div class="resume-item pb-0">
                             <h4>Brandon Johnson</h4>
                             <p><em>Innovative and deadline-driven Graphic Designer with 3+ years of experience designing and
@@ -229,8 +217,7 @@
                                 <li>(123) 456-7891</li>
                                 <li>alice.barkley@example.com</li>
                             </ul>
-                        </div><!-- Edn Resume Item -->
-
+                        </div>
                         <h3 class="resume-title">Education</h3>
                         <div class="resume-item">
                             <h4>Master of Fine Arts &amp; Graphic Design</h4>
@@ -238,8 +225,7 @@
                             <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
                             <p>Qui deserunt veniam. Et sed aliquam labore tempore sed quisquam iusto autem sit. Ea vero
                                 voluptatum qui ut dignissimos deleniti nerada porti sand markend</p>
-                        </div><!-- Edn Resume Item -->
-
+                        </div>
                         <div class="resume-item">
                             <h4>Bachelor of Fine Arts &amp; Graphic Design</h4>
                             <h5>2010 - 2014</h5>
@@ -247,10 +233,8 @@
                             <p>Quia nobis sequi est occaecati aut. Repudiandae et iusto quae reiciendis et quis Eius vel
                                 ratione eius unde vitae rerum voluptates asperiores voluptatem Earum molestiae consequatur
                                 neque etlon sader mart dila</p>
-                        </div><!-- Edn Resume Item -->
-
+                        </div>
                     </div>
-
                     <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
                         <h3 class="resume-title">Professional Experience</h3>
                         <div class="resume-item">
@@ -267,8 +251,7 @@
                                 <li>Oversee the efficient use of production project budgets ranging from $2,000 - $25,000
                                 </li>
                             </ul>
-                        </div><!-- Edn Resume Item -->
-
+                        </div>
                         <div class="resume-item">
                             <h4>Graphic design specialist</h4>
                             <h5>2017 - 2018</h5>
@@ -281,41 +264,30 @@
                                 <li>Created 4+ design presentations and proposals a month for clients and account managers
                                 </li>
                             </ul>
-                        </div><!-- Edn Resume Item -->
-
+                        </div>
                     </div>
-
                 </div>
-
             </div>
+        </section>
 
-        </section><!-- /Resume Section -->
 
-        <!-- Portfolio Section -->
         <section id="portfolio" class="portfolio section light-background">
-
-            <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
                 <h2>Portfolio</h2>
                 <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
                     consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat
                     sit in iste officiis commodi quidem hic quas.</p>
-            </div><!-- End Section Title -->
-
+            </div>
             <div class="container">
-
                 <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
-
                     <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
                         <li data-filter="*" class="filter-active">All</li>
                         <li data-filter=".filter-app">App</li>
                         <li data-filter=".filter-product">Product</li>
                         <li data-filter=".filter-branding">Branding</li>
                         <li data-filter=".filter-books">Books</li>
-                    </ul><!-- End Portfolio Filters -->
-
+                    </ul>
                     <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
-
                         <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
                             <div class="portfolio-content h-100">
                                 <img src="{{ URL::asset('assets/img/portfolio/app-1.jpg') }}" class="img-fluid"
@@ -330,8 +302,7 @@
                                             class="bi bi-link-45deg"></i></a>
                                 </div>
                             </div>
-                        </div><!-- End Portfolio Item -->
-
+                        </div>
                         <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
                             <div class="portfolio-content h-100">
                                 <img src="{{ URL::asset('assets/img/portfolio/product-1.jpg') }}" class="img-fluid"
@@ -346,8 +317,7 @@
                                             class="bi bi-link-45deg"></i></a>
                                 </div>
                             </div>
-                        </div><!-- End Portfolio Item -->
-
+                        </div>
                         <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
                             <div class="portfolio-content h-100">
                                 <img src="{{ URL::asset('assets/img/portfolio/branding-1.jpg') }}" class="img-fluid"
@@ -362,8 +332,7 @@
                                             class="bi bi-link-45deg"></i></a>
                                 </div>
                             </div>
-                        </div><!-- End Portfolio Item -->
-
+                        </div>
                         <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
                             <div class="portfolio-content h-100">
                                 <img src="{{ URL::asset('assets/img/portfolio/books-1.jpg') }}" class="img-fluid"
@@ -378,8 +347,7 @@
                                             class="bi bi-link-45deg"></i></a>
                                 </div>
                             </div>
-                        </div><!-- End Portfolio Item -->
-
+                        </div>
                         <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
                             <div class="portfolio-content h-100">
                                 <img src="{{ URL::asset('assets/img/portfolio/app-2.jpg') }}" class="img-fluid"
@@ -394,8 +362,7 @@
                                             class="bi bi-link-45deg"></i></a>
                                 </div>
                             </div>
-                        </div><!-- End Portfolio Item -->
-
+                        </div>
                         <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
                             <div class="portfolio-content h-100">
                                 <img src="{{ URL::asset('assets/img/portfolio/product-2.jpg') }}" class="img-fluid"
@@ -410,8 +377,7 @@
                                             class="bi bi-link-45deg"></i></a>
                                 </div>
                             </div>
-                        </div><!-- End Portfolio Item -->
-
+                        </div>
                         <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
                             <div class="portfolio-content h-100">
                                 <img src="{{ URL::asset('assets/img/portfolio/branding-2.jpg') }}" class="img-fluid"
@@ -426,8 +392,7 @@
                                             class="bi bi-link-45deg"></i></a>
                                 </div>
                             </div>
-                        </div><!-- End Portfolio Item -->
-
+                        </div>
                         <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
                             <div class="portfolio-content h-100">
                                 <img src="{{ URL::asset('assets/img/portfolio/books-2.jpg') }}" class="img-fluid"
@@ -442,7 +407,7 @@
                                             class="bi bi-link-45deg"></i></a>
                                 </div>
                             </div>
-                        </div><!-- End Portfolio Item -->
+                        </div>
 
                         <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
                             <div class="portfolio-content h-100">
@@ -458,7 +423,7 @@
                                             class="bi bi-link-45deg"></i></a>
                                 </div>
                             </div>
-                        </div><!-- End Portfolio Item -->
+                        </div>
 
                         <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
                             <div class="portfolio-content h-100">
@@ -474,7 +439,7 @@
                                             class="bi bi-link-45deg"></i></a>
                                 </div>
                             </div>
-                        </div><!-- End Portfolio Item -->
+                        </div>
 
                         <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
                             <div class="portfolio-content h-100">
@@ -490,7 +455,7 @@
                                             class="bi bi-link-45deg"></i></a>
                                 </div>
                             </div>
-                        </div><!-- End Portfolio Item -->
+                        </div>
 
                         <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
                             <div class="portfolio-content h-100">
@@ -506,26 +471,20 @@
                                             class="bi bi-link-45deg"></i></a>
                                 </div>
                             </div>
-                        </div><!-- End Portfolio Item -->
-
-                    </div><!-- End Portfolio Container -->
-
+                        </div>
+                    </div>
                 </div>
-
             </div>
-
-        </section><!-- /Portfolio Section -->
+        </section>
 
         <!-- Services Section -->
         <section id="services" class="services section">
-
-            <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
                 <h2>Services</h2>
                 <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
                     consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat
                     sit in iste officiis commodi quidem hic quas.</p>
-            </div><!-- End Section Title -->
+            </div>
 
             <div class="container">
 
@@ -599,11 +558,11 @@
         <!-- Testimonials Section -->
         <section id="testimonials" class="testimonials section light-background">
 
-            <!-- Section Title -->
+
             <div class="container section-title" data-aos="fade-up">
                 <h2>Testimonials</h2>
                 <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-            </div><!-- End Section Title -->
+            </div>
 
             <div class="container" data-aos="fade-up" data-aos-delay="100">
 
@@ -726,11 +685,11 @@
         <!-- Contact Section -->
         <section id="contact" class="contact section">
 
-            <!-- Section Title -->
+
             <div class="container section-title" data-aos="fade-up">
                 <h2>Contact</h2>
                 <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-            </div><!-- End Section Title -->
+            </div>
 
             <div class="container" data-aos="fade-up" data-aos-delay="100">
 
