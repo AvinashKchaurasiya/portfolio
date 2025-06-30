@@ -13,3 +13,4 @@ Route::post("login-proccess", [AuthController::class, "login"])->name("loginProc
 
 // frontend routes
 Route::post("contact-form-save", [ContactController::class, "contactFormSave"])->name("contactFormSave");
+Route::get("thank-you", [ContactController::class, "thankYou"])->name("thankYou");

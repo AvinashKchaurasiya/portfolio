@@ -759,6 +759,7 @@
                     <div class="col-lg-7">
                         <form action="{{ route('contactFormSave') }}" method="post" id="php-email-form"
                             data-aos="fade-up" data-aos-delay="200">
+                            @csrf
                             <div class="row gy-4">
                                 <div class="col-md-4">
                                     <label for="name-field" class="pb-2">Your Name</label>
@@ -789,6 +790,5 @@
                 </div>
             </div>
         </section>
-
     </main>
 @endsection
