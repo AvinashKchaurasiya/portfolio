@@ -6,7 +6,7 @@
                 <div class="card shadow-4">
                     <div class="card-body p-5 text-center">Admin Login</h3>
 
-                        <form action="{{ route("loginProccess") }}" method="POST">
+                        <form action="{{ route('admin.loginProccess') }}" method="POST">
                             @csrf
 
                             <div class="form-outline mb-4">

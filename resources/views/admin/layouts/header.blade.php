@@ -31,8 +31,8 @@
                 @endif
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
-                <li><a class="dropdown-item" href="{{ route('company.profile') }}">My Profile</a></li>
-                <li><a class="dropdown-item text-danger" href="{{ route('logout') }}">Logout</a></li>
+                <li><a class="dropdown-item" href="">My Profile</a></li>
+                <li><a class="dropdown-item text-danger" href="">Logout</a></li>
             </ul>
         </div>
 

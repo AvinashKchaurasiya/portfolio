@@ -1,10 +1,9 @@
   <!-- Sidebar -->
   <div id="sidebar" class="sidebar">
-      <a href="{{ route('company.dashboard') }}" title="Dashboard"
-          class="{{ request()->routeIs('company.dashboard') ? 'active' : '' }}"><span
+      <a href="" title="Dashboard" class="{{ request()->routeIs('company.dashboard') ? 'active' : '' }}"><span
               class="material-icons">dashboard</span><span class="text">Dashboard</span></a>
-      <a href="{{ route('company.roles') }}" class="{{ request()->routeIs('company.roles') ? 'active' : '' }}"
-          title="roles"><span class="material-icons">supervisor_account</span><span class="text">Roles</span></a>
+      <a href="" class="{{ request()->routeIs('company.roles') ? 'active' : '' }}" title="roles"><span
+              class="material-icons">supervisor_account</span><span class="text">Roles</span></a>
       <a href="#" title="projects"><span class="material-icons">folder</span><span
               class="text">Projects</span></a>
       <a href="#" title="tasks"><span class="material-icons">assignment</span><span
