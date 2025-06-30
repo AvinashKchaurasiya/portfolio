@@ -3,38 +3,56 @@
     <main class="main">
         <section id="hero" class="hero section dark-background">
 
-            <img src="{{ URL::asset('assets/img/hero-bg.jpg') }}" alt="" data-aos="fade-in" class="">
+            <img src="{{ URL::asset('assets/img/hero-bg.png') }}" alt="" data-aos="fade-in" class="">
 
             <div class="container" data-aos="fade-up" data-aos-delay="100">
                 <h2>Avinash Kumar</h2>
-                <p>I'm <span class="typed" data-typed-items="Website Designer, Website Developer">Website
-                        Developer</span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span><span
-                        class="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>
+                <p class="mb-2">
+                    I'm <span class="typed" data-typed-items="Website Designer, Website Developer">Website Developer</span>
+                    <span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span>
+                </p>
+                <div class="mt-4">
+                    <a href="{{ URL::asset('assets/resume/Avinash-Kumar-Web Developer.pdf') }}" target="_blank"
+                        class="btn btn-outline-light me-2">
+                        <i class="bi bi-box-arrow-up-right me-1"></i> View Resume
+                    </a>
+                    <a href="#contact" class="btn btn-outline-light">
+                        <i class="bi bi-envelope me-1"></i> Contact Me
+                    </a>
+                </div>
             </div>
-
         </section>
+
 
         <!-- About Section -->
         <section id="about" class="about section">
             <div class="container section-title" data-aos="fade-up">
                 <h2>About</h2>
-                <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-                    consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat
-                    sit in iste officiis commodi quidem hic quas.</p>
+                <p>
+                    I am a passionate <strong>Web Developer and Designer</strong> with a strong foundation in both frontend
+                    and backend technologies. With a keen eye for detail and a creative mindset, I craft visually appealing,
+                    user-friendly, and fully responsive websites that not only look great but also perform seamlessly.
+                </p>
+                <p>
+                    From designing elegant frontend structures to developing dynamic web applications, I specialize in
+                    turning ideas into real digital experiences. I have hands-on experience in technologies like
+                    <strong>HTML, CSS, JavaScript, jQuery, PHP, Laravel, MySQL</strong>, and popular frameworks.
+                </p>
             </div>
 
             <div class="container" data-aos="fade-up" data-aos-delay="100">
 
                 <div class="row gy-4 justify-content-center">
                     <div class="col-lg-4">
-                        <img src="{{ URL::asset('assets/img/my-profile-img.jpg') }}" class="img-fluid" alt="">
+                        <img src="{{ URL::asset('assets/img/about-logo.png') }}" class="img-fluid" alt="">
                     </div>
                     <div class="col-lg-8 content">
                         <h2>Web Developer.</h2>
                         <p class="fst-italic py-3">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore
-                            magna aliqua.
+                            I'm a passionate and results-driven <strong>Web Developer</strong> with over <strong>4.3 years
+                                of experience</strong>, including <strong>3 years of freelancing</strong> and <strong>1.3
+                                years of corporate experience</strong>. I enjoy transforming ideas into real, functional,
+                            and scalable web applications.
                         </p>
                         <div class="row">
                             <div class="col-lg-6">
@@ -61,10 +79,8 @@
 
                                     <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>{{ $age }}
                                             years</span></li>
-
-                                    <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>B.Tech(Computer
-                                            Science & Engg)</span>
-                                    </li>
+                                    <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>B.Tech (Computer
+                                            Science & Engineering)</span></li>
                                     <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong>
                                         <span>avinash8564kumar@gmail.com</span>
                                     </li>
@@ -75,12 +91,14 @@
                             </div>
                         </div>
                         <p class="py-3">
-                            Officiis eligendi itaque labore et dolorum mollitia officiis optio vero. Quisquam sunt adipisci
-                            omnis et ut. Nulla accusantium dolor incidunt officia tempore. Et eius omnis.
-                            Cupiditate ut dicta maxime officiis quidem quia. Sed et consectetur qui quia repellendus itaque
-                            neque.
+                            I have developed a wide range of web solutions including ERP systems, e-commerce platforms,
+                            transport company websites, real estate listing portals, and IT company profiles. I specialize
+                            in <strong>HTML, CSS, JavaScript, jQuery, PHP, Laravel, MySQL</strong> and believe in writing
+                            clean, optimized, and scalable code. My focus is always on building reliable, secure, and
+                            user-friendly web experiences.
                         </p>
                     </div>
+
                 </div>
 
             </div>
@@ -92,36 +110,36 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="stats-item">
                             <i class="bi bi-emoji-smile"></i>
-                            <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1"
+                            <span data-purecounter-start="0" data-purecounter-end="4" data-purecounter-duration="1"
                                 class="purecounter"></span>
-                            <p><strong>Happy Clients</strong> <span>consequuntur quae</span></p>
+                            <p><strong>Happy Clients</strong></p>
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-6">
                         <div class="stats-item">
                             <i class="bi bi-journal-richtext"></i>
-                            <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1"
+                            <span data-purecounter-start="0" data-purecounter-end="8" data-purecounter-duration="1"
                                 class="purecounter"></span>
-                            <p><strong>Projects</strong> <span>adipisci atque cum quia aut</span></p>
+                            <p><strong>Projects</strong></p>
                         </div>
                     </div>
 
-                    <div class="col-lg-3 col-md-6">
+                    {{-- <div class="col-lg-3 col-md-6">
                         <div class="stats-item">
                             <i class="bi bi-headset"></i>
                             <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1"
                                 class="purecounter"></span>
                             <p><strong>Hours Of Support</strong> <span>aut commodi quaerat</span></p>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="col-lg-3 col-md-6">
                         <div class="stats-item">
                             <i class="bi bi-people"></i>
-                            <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1"
+                            <span data-purecounter-start="0" data-purecounter-end="2" data-purecounter-duration="1"
                                 class="purecounter"></span>
-                            <p><strong>Hard Workers</strong> <span>rerum asperiores dolor</span></p>
+                            <p><strong>Hard Workers</strong></p>
                         </div>
                     </div>
 
@@ -133,15 +151,14 @@
 
 
         <section id="skills" class="skills section light-background">
-
-
             <div class="container section-title" data-aos="fade-up">
                 <h2>Skills</h2>
-                <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+                <p>I have hands-on experience in both frontend and backend development. Below are the technologies I work
+                    with regularly:</p>
             </div>
             <div class="container" data-aos="fade-up" data-aos-delay="100">
                 <div class="row skills-content skills-animation">
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
                         <div class="progress">
                             <span class="skill"><span>HTML</span> <i class="val">100%</i></span>
                             <div class="progress-bar-wrap">
@@ -150,39 +167,83 @@
                             </div>
                         </div>
                         <div class="progress">
-                            <span class="skill"><span>CSS</span> <i class="val">90%</i></span>
+                            <span class="skill"><span>CSS</span> <i class="val">95%</i></span>
                             <div class="progress-bar-wrap">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0"
+                                <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0"
                                     aria-valuemax="100"></div>
                             </div>
                         </div>
                         <div class="progress">
-                            <span class="skill"><span>JavaScript</span> <i class="val">75%</i></span>
+                            <span class="skill"><span>JavaScript</span> <i class="val">95%</i></span>
                             <div class="progress-bar-wrap">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0"
+                                <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0"
+                                    aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div class="progress">
+                            <span class="skill"><span>jQuery</span> <i class="val">95%</i></span>
+                            <div class="progress-bar-wrap">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0"
                                     aria-valuemax="100"></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
                         <div class="progress">
-                            <span class="skill"><span>PHP</span> <i class="val">80%</i></span>
+                            <span class="skill"><span>Bootstrap</span> <i class="val">99%</i></span>
+                            <div class="progress-bar-wrap">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="99" aria-valuemin="0"
+                                    aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div class="progress">
+                            <span class="skill"><span>PHP</span> <i class="val">99%</i></span>
+                            <div class="progress-bar-wrap">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="99" aria-valuemin="0"
+                                    aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div class="progress">
+                            <span class="skill"><span>Laravel</span> <i class="val">85%</i></span>
+                            <div class="progress-bar-wrap">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0"
+                                    aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div class="progress">
+                            <span class="skill"><span>MySQL</span> <i class="val">95%</i></span>
+                            <div class="progress-bar-wrap">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0"
+                                    aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="progress">
+                            <span class="skill"><span>Git & GitHub</span> <i class="val">85%</i></span>
+                            <div class="progress-bar-wrap">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0"
+                                    aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div class="progress">
+                            <span class="skill"><span>Code Igniter</span> <i class="val">80%</i></span>
                             <div class="progress-bar-wrap">
                                 <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0"
                                     aria-valuemax="100"></div>
                             </div>
                         </div>
                         <div class="progress">
-                            <span class="skill"><span>WordPress/CMS</span> <i class="val">90%</i></span>
+                            <span class="skill"><span>Ajax</span> <i class="val">85%</i></span>
                             <div class="progress-bar-wrap">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0"
+                                <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0"
                                     aria-valuemax="100"></div>
                             </div>
                         </div>
                         <div class="progress">
-                            <span class="skill"><span>Photoshop</span> <i class="val">55%</i></span>
+                            <span class="skill"><span>Deployment</span> <i class="val">100%</i></span>
                             <div class="progress-bar-wrap">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0"
+                                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0"
                                     aria-valuemax="100"></div>
                             </div>
                         </div>
@@ -194,70 +255,99 @@
         <section id="resume" class="resume section">
             <div class="container section-title" data-aos="fade-up">
                 <h2>Resume</h2>
-                <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-                    consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat
-                    sit in iste officiis commodi quidem hic quas.</p>
+                <p>A passionate and experienced PHP Laravel Web Developer with a strong background in backend and frontend
+                    development, specialized in crafting efficient, scalable, and SEO-friendly web applications.</p>
             </div>
             <div class="container">
                 <div class="row">
+                    <!-- Summary & Education -->
                     <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                        <h3 class="resume-title">Sumary</h3>
+                        <h3 class="resume-title">Summary</h3>
                         <div class="resume-item pb-0">
-                            <h4>Brandon Johnson</h4>
-                            <p><em>Innovative and deadline-driven Graphic Designer with 3+ years of experience designing and
-                                    developing user-centered digital/print marketing material from initial concept to final,
-                                    polished deliverable.</em></p>
+                            <h4>Avinash Kumar</h4>
+                            <p><em>Motivated PHP and Laravel Developer with 4.6+ years of experience (including freelance),
+                                    focused on delivering robust and maintainable web applications. Skilled in backend
+                                    development, debugging, third-party integration, and team collaboration.</em></p>
                             <ul>
-                                <li>Portland par 127,Orlando, FL</li>
-                                <li>(123) 456-7891</li>
-                                <li>alice.barkley@example.com</li>
+                                <li>Noida, India</li>
+                                <li>+91-8650163913</li>
+                                <li>avinash8564kumar@gmail.com</li>
                             </ul>
                         </div>
+
                         <h3 class="resume-title">Education</h3>
+
                         <div class="resume-item">
-                            <h4>Master of Fine Arts &amp; Graphic Design</h4>
-                            <h5>2015 - 2016</h5>
-                            <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
-                            <p>Qui deserunt veniam. Et sed aliquam labore tempore sed quisquam iusto autem sit. Ea vero
-                                voluptatum qui ut dignissimos deleniti nerada porti sand markend</p>
+                            <h4>B.Tech – Computer Science & Engineering</h4>
+                            <h5>2021 – 2024</h5>
+                            <p><em>Kanpur Institute of Technology, Kanpur</em></p>
+                            <p>
+                                Studied core subjects like Data Structures, Algorithms, Web Technologies, and Software
+                                Engineering. Gained practical skills in backend development using PHP and Laravel.
+                                <br><br>
+                                <strong>Mini Project:</strong> Developed a <em>Quiz Mobile Application</em> using Android
+                                and Firebase for real-time quiz taking and scoring.<br>
+                                <strong>Major Project:</strong> Built a fully functional <em>School ERP System</em> with
+                                modules like student registration, attendance, exam management, and admin control using
+                                Laravel and MySQL.
+                            </p>
                         </div>
+
                         <div class="resume-item">
-                            <h4>Bachelor of Fine Arts &amp; Graphic Design</h4>
-                            <h5>2010 - 2014</h5>
-                            <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
-                            <p>Quia nobis sequi est occaecati aut. Repudiandae et iusto quae reiciendis et quis Eius vel
-                                ratione eius unde vitae rerum voluptates asperiores voluptatem Earum molestiae consequatur
-                                neque etlon sader mart dila</p>
+                            <h4>Diploma – Computer Science & Engineering</h4>
+                            <h5>2017 – 2020</h5>
+                            <p><em>Government Polytechnic, Saharanpur</em></p>
+                            <p>
+                                Built a strong foundation in programming, database management, and web fundamentals. Worked
+                                on real-time academic projects and learned the basics of software development.
+                                <br><br>
+                                <strong>Mini Project:</strong> Created a <em>Hotel Management System</em> using PHP, MySQL,
+                                HTML, CSS, JavaSCript to
+                                manage bookings, customer details, and billing.<br>
+                                <strong>Major Project:</strong> Developed a <em>Library Management System</em> using PHP
+                                and MySQL to automate book issuing, returns, and student record tracking.
+                            </p>
                         </div>
+
                     </div>
+
+                    <!-- Experience -->
                     <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
                         <h3 class="resume-title">Professional Experience</h3>
+
                         <div class="resume-item">
-                            <h4>Senior graphic design specialist</h4>
-                            <h5>2019 - Present</h5>
-                            <p><em>Experion, New York, NY </em></p>
+                            <h4>Web Developer – Internet Moguls</h4>
+                            <h5>Apr 2025 – Present</h5>
+                            <p><em>Delhi, India</em></p>
                             <ul>
-                                <li>Lead in the design, development, and implementation of the graphic, layout, and
-                                    production communication materials</li>
-                                <li>Delegate tasks to the 7 members of the design team and provide counsel on all aspects of
-                                    the project. </li>
-                                <li>Supervise the assessment of all graphic materials in order to ensure quality and
-                                    accuracy of the design</li>
-                                <li>Oversee the efficient use of production project budgets ranging from $2,000 - $25,000
-                                </li>
+                                <li>Designing and developing dynamic web applications for hospitality and event management
+                                    clients.</li>
+                                <li>Maintaining, optimizing, and enhancing legacy systems with modern technologies.</li>
+                                <li>Specialized in feature enhancements and system scalability.</li>
                             </ul>
                         </div>
+
                         <div class="resume-item">
-                            <h4>Graphic design specialist</h4>
-                            <h5>2017 - 2018</h5>
-                            <p><em>Stepping Stone Advertising, New York, NY</em></p>
+                            <h4>Web Developer – Nirvaat Internet Pvt. Ltd.</h4>
+                            <h5>Apr 2024 – Apr 2025</h5>
+                            <p><em>Noida, India</em></p>
                             <ul>
-                                <li>Developed numerous marketing programs (logos, brochures,infographics, presentations, and
-                                    advertisements).</li>
-                                <li>Managed up to 5 projects or tasks at a given time while under pressure</li>
-                                <li>Recommended and consulted with clients on the most appropriate graphic design</li>
-                                <li>Created 4+ design presentations and proposals a month for clients and account managers
-                                </li>
+                                <li>Worked on PHP, Laravel, Magento, MySQL, and React.js for multiple dynamic websites.</li>
+                                <li>Collaborated with teams to deliver seamless features and user experiences.</li>
+                                <li>Participated in code reviews and adhered to best practices.</li>
+                            </ul>
+                        </div>
+
+                        <div class="resume-item">
+                            <h4>Freelance Web Developer</h4>
+                            <h5>2021 – 2024</h5>
+                            <p><em>Remote</em></p>
+                            <ul>
+                                <li>Built and delivered websites for clients in real estate, transport, education, and
+                                    corporate sectors.</li>
+                                <li>Focused on full-stack development using Laravel, PHP, HTML, CSS, JS, jQuery, and SEO
+                                    techniques.</li>
+                                <li>Managed end-to-end development including UI, backend logic, database, and hosting.</li>
                             </ul>
                         </div>
                     </div>
@@ -265,13 +355,14 @@
             </div>
         </section>
 
-
         <section id="portfolio" class="portfolio section light-background">
             <div class="container section-title" data-aos="fade-up">
                 <h2>Portfolio</h2>
-                <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-                    consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat
-                    sit in iste officiis commodi quidem hic quas.</p>
+                <p>
+                    Explore some of the professional projects I’ve worked on — including custom websites, ERP systems, real
+                    estate platforms, and Android applications. Each project showcases my skills in frontend and backend
+                    development, user experience, and performance optimization.
+                </p>
             </div>
             <div class="container">
                 <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
@@ -470,67 +561,44 @@
         <section id="services" class="services section">
             <div class="container section-title" data-aos="fade-up">
                 <h2>Services</h2>
-                <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-                    consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat
-                    sit in iste officiis commodi quidem hic quas.</p>
+                <p>I offer professional and reliable digital solutions to help individuals and businesses grow online. Below
+                    are the services I specialize in:</p>
             </div>
             <div class="container">
                 <div class="row gy-4">
+                    <!-- Website Designing -->
                     <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="100">
-                        <div class="icon flex-shrink-0"><i class="bi bi-briefcase"></i></div>
+                        <div class="icon flex-shrink-0"><i class="bi bi-palette2"></i></div>
                         <div>
-                            <h4 class="title"><a href="service-details.html" class="stretched-link">Lorem Ipsum</a></h4>
-                            <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias
-                                excepturi sint occaecati cupiditate non provident</p>
+                            <h4 class="title"><a href="#" class="stretched-link">Website Designing</a></h4>
+                            <p class="description">Modern, responsive, and user-friendly website designs using HTML, CSS,
+                                Bootstrap, and UI trends that create strong first impressions.</p>
                         </div>
                     </div>
+
+                    <!-- Website Development -->
                     <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="200">
-                        <div class="icon flex-shrink-0"><i class="bi bi-card-checklist"></i></div>
+                        <div class="icon flex-shrink-0"><i class="bi bi-code-slash"></i></div>
                         <div>
-                            <h4 class="title"><a href="service-details.html" class="stretched-link">Dolor Sitema</a>
-                            </h4>
-                            <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                                ex ea commodo consequat tarad limino ata</p>
+                            <h4 class="title"><a href="#" class="stretched-link">Website Development</a></h4>
+                            <p class="description">Custom web development using PHP, Laravel, MySQL, and JavaScript to
+                                build dynamic and scalable web applications for various industries.</p>
                         </div>
                     </div>
+
+                    <!-- App Development -->
                     <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="300">
-                        <div class="icon flex-shrink-0"><i class="bi bi-bar-chart"></i></div>
+                        <div class="icon flex-shrink-0"><i class="bi bi-phone"></i></div>
                         <div>
-                            <h4 class="title"><a href="service-details.html" class="stretched-link">Sed ut
-                                    perspiciatis</a></h4>
-                            <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                                dolore eu fugiat nulla pariatur</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="400">
-                        <div class="icon flex-shrink-0"><i class="bi bi-binoculars"></i></div>
-                        <div>
-                            <h4 class="title"><a href="service-details.html" class="stretched-link">Magni Dolores</a>
-                            </h4>
-                            <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                                officia deserunt mollit anim id est laborum</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="500">
-                        <div class="icon flex-shrink-0"><i class="bi bi-brightness-high"></i></div>
-                        <div>
-                            <h4 class="title"><a href="service-details.html" class="stretched-link">Nemo Enim</a></h4>
-                            <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui
-                                blanditiis praesentium voluptatum deleniti atque</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="600">
-                        <div class="icon flex-shrink-0"><i class="bi bi-calendar4-week"></i></div>
-                        <div>
-                            <h4 class="title"><a href="service-details.html" class="stretched-link">Eiusmod Tempor</a>
-                            </h4>
-                            <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero
-                                tempore, cum soluta nobis est eligendi</p>
+                            <h4 class="title"><a href="#" class="stretched-link">App Development</a></h4>
+                            <p class="description">Development of Android applications with smooth UI and backend
+                                connectivity, perfect for startups, institutes, and small businesses.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
         <section id="testimonials" class="testimonials section light-background">
             <div class="container section-title" data-aos="fade-up">
                 <h2>Testimonials</h2>
@@ -653,66 +721,66 @@
         <section id="contact" class="contact section">
             <div class="container section-title" data-aos="fade-up">
                 <h2>Contact</h2>
-                <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+                <p>Have a project in mind or want to collaborate? I'm just a message away — feel free to get in touch!</p>
             </div>
             <div class="container" data-aos="fade-up" data-aos-delay="100">
                 <div class="row gy-4">
+                    <!-- Contact Info -->
                     <div class="col-lg-5">
                         <div class="info-wrap">
                             <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
                                 <i class="bi bi-geo-alt flex-shrink-0"></i>
                                 <div>
                                     <h3>Address</h3>
-                                    <p>A108 Adam Street, New York, NY 535022</p>
+                                    <p>Noida, Uttar Pradesh, India</p>
                                 </div>
                             </div>
                             <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
                                 <i class="bi bi-telephone flex-shrink-0"></i>
                                 <div>
-                                    <h3>Call Us</h3>
-                                    <p>+1 5589 55488 55</p>
+                                    <h3>Call Me</h3>
+                                    <p>+91 8650163913</p>
                                 </div>
                             </div>
                             <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
                                 <i class="bi bi-envelope flex-shrink-0"></i>
                                 <div>
-                                    <h3>Email Us</h3>
-                                    <p>info@example.com</p>
+                                    <h3>Email Me</h3>
+                                    <p>avinash8564kumar@gmail.com</p>
                                 </div>
                             </div>
-                            <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d48389.78314118045!2d-74.006138!3d40.710059!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a22a3bda30d%3A0xb89d1fe6bc499443!2sDowntown%20Conference%20Center!5e0!3m2!1sen!2sus!4v1676961268712!5m2!1sen!2sus"
+                            <iframe src="https://www.google.com/maps?q=Noida,+Uttar+Pradesh,+India&output=embed"
                                 frameborder="0" style="border:0; width: 100%; height: 270px;" allowfullscreen=""
                                 loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>
+
+                    <!-- Contact Form -->
                     <div class="col-lg-7">
-                        <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up"
-                            data-aos-delay="200">
+                        <form action="{{ route('contactFormSave') }}" method="post" id="php-email-form"
+                            data-aos="fade-up" data-aos-delay="200">
                             <div class="row gy-4">
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <label for="name-field" class="pb-2">Your Name</label>
-                                    <input type="text" name="name" id="name-field" class="form-control"
-                                        required="">
+                                    <input type="text" name="name" id="name-field" class="form-control">
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <label for="email-field" class="pb-2">Your Email</label>
-                                    <input type="email" class="form-control" name="email" id="email-field"
-                                        required="">
+                                    <input type="email" class="form-control" name="email" id="email-field">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="phone-field" class="pb-2">Your Phone</label>
+                                    <input type="text" class="form-control" name="phone" id="phone-field">
                                 </div>
                                 <div class="col-md-12">
                                     <label for="subject-field" class="pb-2">Subject</label>
-                                    <input type="text" class="form-control" name="subject" id="subject-field"
-                                        required="">
+                                    <input type="text" class="form-control" name="subject" id="subject-field">
                                 </div>
                                 <div class="col-md-12">
                                     <label for="message-field" class="pb-2">Message</label>
-                                    <textarea class="form-control" name="message" rows="10" id="message-field" required=""></textarea>
+                                    <textarea class="form-control" name="message" rows="7" id="message-field"></textarea>
                                 </div>
                                 <div class="col-md-12 text-center">
-                                    <div class="loading">Loading</div>
-                                    <div class="error-message"></div>
-                                    <div class="sent-message">Your message has been sent. Thank you!</div>
                                     <button type="submit">Send Message</button>
                                 </div>
                             </div>
@@ -721,5 +789,6 @@
                 </div>
             </div>
         </section>
+
     </main>
 @endsection

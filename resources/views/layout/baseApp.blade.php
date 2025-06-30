@@ -9,7 +9,7 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="{{ URL::asset('assets/img/favicon.png') }}" rel="icon">
+    <link href="{{ URL::asset('assets/img/about-logo.png') }}" rel="icon">
     <link href="{{ URL::asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
     <!-- Fonts -->
@@ -28,9 +28,53 @@
 
     <!-- Main CSS File -->
     <link href="{{ URL::asset('assets/css/main.css') }}" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+        #form-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
 </head>
 
 <body class="index-page">
+    <div id="form-overlay" style="display:none;">
+        <div class="spinner-border text-light" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                toast: true,
+                position: 'top-end',
+                icon: 'success',
+                title: '{{ session('success') }}',
+                showConfirmButton: false,
+                timer: 3000
+            });
+        </script>
+    @elseif (session('error'))
+        <script>
+            Swal.fire({
+                toast: true,
+                position: 'top-end',
+                icon: 'error',
+                title: '{{ session('error') }}',
+                showConfirmButton: false,
+                timer: 3000
+            });
+        </script>
+    @endif
     @include('layout.header')
     @yield('content')
     @include('layout.footer')
@@ -42,7 +86,6 @@
 
     <!-- Vendor JS Files -->
     <script src="{{ URL::asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/vendor/php-email-form/validate.js') }}"></script>
     <script src="{{ URL::asset('assets/vendor/aos/aos.js') }}"></script>
     <script src="{{ URL::asset('assets/vendor/typed.js/typed.umd.js') }}"></script>
     <script src="{{ URL::asset('assets/vendor/purecounter/purecounter_vanilla.js') }}"></script>
@@ -54,6 +97,11 @@
 
     <!-- Main JS File -->
     <script src="{{ URL::asset('assets/js/main.js') }}"></script>
+    <script>
+        document.querySelector('#php-email-form').addEventListener('submit', function() {
+            document.getElementById('form-overlay').style.display = 'flex';
+        });
+    </script>
 </body>
 
 </html>
