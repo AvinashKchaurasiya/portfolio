@@ -2,7 +2,7 @@
     <i class="header-toggle d-xl-none bi bi-list"></i>
 
     <div class="profile-img">
-        <img src="{{ URL::asset('assets/img/logo.png') }}" alt="" class="img-fluid rounded-circle">
+        <img src="{{ URL::asset('assets/img/about-logo.png') }}" alt="" class="img-fluid rounded-circle">
     </div>
 
     <a href="index.html" class="logo d-flex align-items-center justify-content-center">
@@ -10,11 +10,8 @@
     </a>
 
     <div class="social-links text-center">
-        <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
-        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-        <a href="#" class="google-plus"><i class="bi bi-skype"></i></a>
-        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://www.linkedin.com/in/avinash-kumar-websitedevelopmentexpert/" class="linkedin"
+            target="_blank"><i class="bi bi-linkedin"></i></a>
     </div>
 
     <nav id="navmenu" class="navmenu">

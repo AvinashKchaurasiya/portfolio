@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ $title ? $title : 'Company Dashboard | Smart Software Solutions for Smarter Business' }}</title>
+    <title>{{ $title ? $title : 'Portfolio | Avinash Kumar' }}</title>
     <link rel="icon" href="{{ URL::asset('admin/images/logo/logo.png') }}">
     <link rel="stylesheet" href="{{ URL::asset('admin/assets/css/custom.css') }}" />
     <link rel="stylesheet" href="{{ URL::asset('admin/assets/css/mdb.min.css') }}" />
@@ -34,27 +34,27 @@
         }
     </style>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            @if (Session::has('success'))
-                Swal.fire({
-                    toast: true,
-                    position: 'top-end',
-                    icon: 'success',
-                    title: '{{ Session::get('success') }}',
-                    showConfirmButton: false,
-                    timer: 3000
-                });
-            @elseif (Session::has('error'))
-                Swal.fire({
-                    toast: true,
-                    position: 'top-end',
-                    icon: 'error',
-                    title: '{{ Session::get('error') }}',
-                    showConfirmButton: false,
-                    timer: 3000
-                });
-            @endif
-        });
+        @if (session('success'))
+            Swal.fire({
+                toast: true,
+                position: 'top-end',
+                icon: 'success',
+                title: "{{ session('success') }}",
+                showConfirmButton: false,
+                timer: 3000
+            });
+        @endif
+
+        @if (session('error'))
+            Swal.fire({
+                toast: true,
+                position: 'top-end',
+                icon: 'error',
+                title: "{{ session('error') }}",
+                showConfirmButton: false,
+                timer: 3000
+            });
+        @endif
     </script>
 </head>
 

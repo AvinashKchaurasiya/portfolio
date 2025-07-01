@@ -1,20 +1,41 @@
   <!-- Sidebar -->
   <div id="sidebar" class="sidebar">
-      <a href="" title="Dashboard" class="{{ request()->routeIs('company.dashboard') ? 'active' : '' }}"><span
+      <a href="{{ route('admin.dashboard') }}" title="Dashboard"
+          class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}"><span
               class="material-icons">dashboard</span><span class="text">Dashboard</span></a>
-      <a href="" class="{{ request()->routeIs('company.roles') ? 'active' : '' }}" title="roles"><span
-              class="material-icons">supervisor_account</span><span class="text">Roles</span></a>
+      <a href="" class="{{ request()->routeIs('company.roles') ? 'active' : '' }}" title="Clients"><span
+              class="material-icons">supervisor_account</span><span class="text">Clients</span></a>
       <a href="#" title="projects"><span class="material-icons">folder</span><span
               class="text">Projects</span></a>
-      <a href="#" title="tasks"><span class="material-icons">assignment</span><span
-              class="text">Tasks</span></a>
-      <a href="#" title="Employees"><span class="material-icons">people</span><span
-              class="text">Employees</span></a>
-      <a href="#" title="Attendance"><span class="material-icons">access_time</span><span
-              class="text">Attendance</span></a>
-      <a href="#" title="Salary"><span class="material-icons">attach_money</span><span
-              class="text">Salary</span></a>
-      <a href="#" title="Leaves"><span class="material-icons">event</span><span class="text">Leaves</span></a>
+      <a href="{{ route('admin.skills') }}" title="Skills"
+          class="{{ request()->routeIs('admin.skills') || request()->routeIs('admin.editSkill') ? 'active' : '' }}">
+          <span class="material-icons">psychology</span>
+          <span class="text">Skills</span>
+      </a>
+      <a href="{{ route('admin.technology') }}" title="Technologies"
+          class="{{ request()->routeIs('admin.technology') || request()->routeIs('admin.editTechnology') ? 'active' : '' }}">
+          <span class="material-icons">developer_mode</span>
+          <span class="text">Technologies</span>
+      </a>
+
+      <a href="{{ route('admin.services') }}" title="Services"
+          class="{{ request()->routeIs('admin.services') || request()->routeIs('admin.editService') ? 'active' : '' }}">
+          <span class="material-icons">build_circle</span>
+          <span class="text">Services</span>
+      </a>
+
+      <a href="{{ route('admin.experiences') }}" title="Experience"
+          class="{{ request()->routeIs('admin.experiences') || request()->routeIs('admin.editExperience') ? 'active' : '' }}">
+          <span class="material-icons">work_history</span>
+          <span class="text">Experience</span>
+      </a>
+
+      <a href="#" title="Contact Details">
+          <span class="material-icons">contact_phone</span>
+          <span class="text">Contact Details</span>
+      </a>
+      <a href="#" title="Testimonials"><span class="material-icons">rate_review</span><span
+              class="text">Testimonials</span></a>
       <a href="#" title="Settings"><span class="material-icons">settings</span><span
               class="text">Settings</span></a>
   </div>

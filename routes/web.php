@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ExperinceController;
+use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\SkillController;
+use App\Http\Controllers\Admin\TechnologyController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
@@ -8,10 +13,40 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
-    Route::post('login-proccess', [AuthController::class, 'login'])->name('loginProccess');
+    Route::post('login-proccess', [AuthController::class, 'loginProcess'])->name('loginProccess');
 
     Route::middleware('isAdminLogin')->group(function () {
-        Route::get('dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
+        Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+
+        //skills routes
+        Route::get('skills', [SkillController::class, 'Index'])->name('skills');
+        Route::post('skills-save', [SkillController::class, 'skillSave'])->name('skillSave');
+        Route::get('edit-skill/{id}', [SkillController::class, 'editSkill'])->name('editSkill');
+        Route::post('update-skill/{id}', [SkillController::class, 'updateSkill'])->name('updateSkill');
+        Route::delete('delete-skill/{id}', [SkillController::class, 'deleteSkill'])->name('deleteSkill');
+
+        // technology routes
+        Route::get('technology', [TechnologyController::class, "Index"])->name('technology');
+        Route::post('technology-save', [TechnologyController::class, "technologySave"])->name('technologySave');
+        Route::get('edit-technology/{id}', [TechnologyController::class, "editTechnology"])->name('editTechnology');
+        Route::post('update-technology/{id}', [TechnologyController::class, "updateTechnology"])->name('updateTechnology');
+        Route::delete('delete-technology/{id}', [TechnologyController::class, "deleteTechnology"])->name('deleteTechnology');
+
+        // services routes
+        Route::get('services', [ServiceController::class, 'Index'])->name('services');
+        Route::post('service-save', [ServiceController::class, 'serviceSave'])->name('serviceSave');
+        Route::get('edit-service/{id}', [ServiceController::class, 'editService'])->name('editService');
+        Route::post('update-service/{id}', [ServiceController::class, 'updateService'])->name('updateService');
+        Route::delete('delete-service/{id}', [ServiceController::class, 'deleteService'])->name('deleteService');
+        Route::post('update-status/{id}', [ServiceController::class, 'updateStatus'])->name('updateStatus');
+
+        // experience routes
+        Route::get('experiences', [ExperinceController::class, 'Index'])->name('experiences');
+        Route::post('experience-save', [ExperinceController::class, 'experienceSave'])->name('experienceSave');
+        Route::get('edit-experience/{id}', [ExperinceController::class, 'editExperience'])->name('editExperience');
+        Route::post('update-experience/{id}', [ExperinceController::class, 'updateExperience'])->name('updateExperience');
+        Route::delete('delete-experience/{id}', [ExperinceController::class, 'deleteExperience'])->name('deleteExperience');
     });
 });
 

@@ -25,8 +25,9 @@
         <div class="dropdown">
             <a class="text-reset dropdown-toggle hidden-arrow" href="#" id="profileDropdown" role="button"
                 data-mdb-toggle="dropdown" aria-expanded="false">
-                @if (session()->has('name'))
-                    <p style="font-size: 1.2rem; padding-top: 1rem !important;"><strong>{{ session('name') }}</strong>
+                @if (session()->has('user_name'))
+                    <p style="font-size: 1.2rem; padding-top: 1rem !important;">
+                        <strong>{{ session('user_name') }}</strong>
                     </p>
                 @endif
             </a>

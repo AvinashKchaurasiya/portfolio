@@ -60,7 +60,7 @@
                                     <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>10 Aug
                                             2001</span></li>
                                     <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong>
-                                        <span>www.z1iinnovation.com</span>
+                                        <a href="https://z1iinnovation.com/" target="_blank">www.z1iinnovation.com</a>
                                     </li>
                                     <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong>
                                         <span>+91-8650163913</span>
@@ -265,7 +265,7 @@
                         <h3 class="resume-title">Summary</h3>
                         <div class="resume-item pb-0">
                             <h4>Avinash Kumar</h4>
-                            <p><em>Motivated PHP and Laravel Developer with 4.6+ years of experience (including freelance),
+                            <p><em>Motivated PHP and Laravel Developer with 4.3+ years of experience (including freelance),
                                     focused on delivering robust and maintainable web applications. Skilled in backend
                                     development, debugging, third-party integration, and team collaboration.</em></p>
                             <ul>
@@ -749,9 +749,6 @@
                                     <p>avinash8564kumar@gmail.com</p>
                                 </div>
                             </div>
-                            <iframe src="https://www.google.com/maps?q=Noida,+Uttar+Pradesh,+India&output=embed"
-                                frameborder="0" style="border:0; width: 100%; height: 270px;" allowfullscreen=""
-                                loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>
 
