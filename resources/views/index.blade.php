@@ -158,96 +158,25 @@
             </div>
             <div class="container" data-aos="fade-up" data-aos-delay="100">
                 <div class="row skills-content skills-animation">
-                    <div class="col-lg-4">
-                        <div class="progress">
-                            <span class="skill"><span>HTML</span> <i class="val">100%</i></span>
-                            <div class="progress-bar-wrap">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0"
-                                    aria-valuemax="100"></div>
+                    @if (isset($skills) && count($skills) > 0)
+                        @foreach ($skills as $skill)
+                            <div class="col-md-2 col-sm-6 mb-4">
+                                <div class="card skill-card shadow h-100">
+                                    <div class="card-body">
+                                        <div class="skill-icon mb-3 text-center">
+                                            <img src="{{ asset($skill->icon) }}" alt="{{ $skill->name }}" class="img-fluid"
+                                                style="width: 60px; height: 60px;">
+                                        </div>
+                                        <h5 class="card-title text-center">{{ $skill->name }}</h5>
+                                    </div>
+                                </div>
                             </div>
+                        @endforeach
+                    @else
+                        <div class="col-12">
+                            <p>No skills found.</p>
                         </div>
-                        <div class="progress">
-                            <span class="skill"><span>CSS</span> <i class="val">95%</i></span>
-                            <div class="progress-bar-wrap">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0"
-                                    aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                        <div class="progress">
-                            <span class="skill"><span>JavaScript</span> <i class="val">95%</i></span>
-                            <div class="progress-bar-wrap">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0"
-                                    aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                        <div class="progress">
-                            <span class="skill"><span>jQuery</span> <i class="val">95%</i></span>
-                            <div class="progress-bar-wrap">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0"
-                                    aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="progress">
-                            <span class="skill"><span>Bootstrap</span> <i class="val">99%</i></span>
-                            <div class="progress-bar-wrap">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="99" aria-valuemin="0"
-                                    aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                        <div class="progress">
-                            <span class="skill"><span>PHP</span> <i class="val">99%</i></span>
-                            <div class="progress-bar-wrap">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="99" aria-valuemin="0"
-                                    aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                        <div class="progress">
-                            <span class="skill"><span>Laravel</span> <i class="val">85%</i></span>
-                            <div class="progress-bar-wrap">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0"
-                                    aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                        <div class="progress">
-                            <span class="skill"><span>MySQL</span> <i class="val">95%</i></span>
-                            <div class="progress-bar-wrap">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0"
-                                    aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="progress">
-                            <span class="skill"><span>Git & GitHub</span> <i class="val">85%</i></span>
-                            <div class="progress-bar-wrap">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0"
-                                    aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                        <div class="progress">
-                            <span class="skill"><span>Code Igniter</span> <i class="val">80%</i></span>
-                            <div class="progress-bar-wrap">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0"
-                                    aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                        <div class="progress">
-                            <span class="skill"><span>Ajax</span> <i class="val">85%</i></span>
-                            <div class="progress-bar-wrap">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0"
-                                    aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                        <div class="progress">
-                            <span class="skill"><span>Deployment</span> <i class="val">100%</i></span>
-                            <div class="progress-bar-wrap">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0"
-                                    aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                    </div>
+                    @endif
                 </div>
             </div>
         </section>
@@ -566,36 +495,29 @@
             </div>
             <div class="container">
                 <div class="row gy-4">
-                    <!-- Website Designing -->
-                    <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="100">
-                        <div class="icon flex-shrink-0"><i class="bi bi-palette2"></i></div>
-                        <div>
-                            <h4 class="title"><a href="#" class="stretched-link">Website Designing</a></h4>
-                            <p class="description">Modern, responsive, and user-friendly website designs using HTML, CSS,
-                                Bootstrap, and UI trends that create strong first impressions.</p>
-                        </div>
-                    </div>
-
-                    <!-- Website Development -->
-                    <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="200">
-                        <div class="icon flex-shrink-0"><i class="bi bi-code-slash"></i></div>
-                        <div>
-                            <h4 class="title"><a href="#" class="stretched-link">Website Development</a></h4>
-                            <p class="description">Custom web development using PHP, Laravel, MySQL, and JavaScript to
-                                build dynamic and scalable web applications for various industries.</p>
-                        </div>
-                    </div>
-
-                    <!-- App Development -->
-                    <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="300">
-                        <div class="icon flex-shrink-0"><i class="bi bi-phone"></i></div>
-                        <div>
-                            <h4 class="title"><a href="#" class="stretched-link">App Development</a></h4>
-                            <p class="description">Development of Android applications with smooth UI and backend
-                                connectivity, perfect for startups, institutes, and small businesses.</p>
-                        </div>
-                    </div>
+                    @if (isset($services) && count($services) > 0)
+                        @foreach ($services as $service)
+                            <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="100">
+                                <!-- Icon image from DB -->
+                                <div class="icon flex-shrink-0 me-3">
+                                    <img src="{{ URL::asset($service->icon) }}" alt="{{ $service->title }}"
+                                        style="width: 50px; height: 50px;">
+                                </div>
+                                <div>
+                                    <!-- Service Title -->
+                                    <h4 class="title">
+                                        <a href="#" class="stretched-link">{{ $service->title }}</a>
+                                    </h4>
+                                    <!-- Service Description -->
+                                    <p class="description">{{ $service->description }}</p>
+                                </div>
+                            </div>
+                        @endforeach
+                    @else
+                        <p class="text-center">No services available.</p>
+                    @endif
                 </div>
+
             </div>
         </section>
 
