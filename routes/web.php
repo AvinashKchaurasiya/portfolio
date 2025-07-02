@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ContactController as AdminContactController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ExperinceController;
 use App\Http\Controllers\Admin\ServiceController;
@@ -48,6 +49,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('edit-experience/{id}', [ExperinceController::class, 'editExperience'])->name('editExperience');
         Route::put('update-experience/{id}', [ExperinceController::class, 'updateExperience'])->name('updateExperience');
         Route::delete('delete-experience/{id}', [ExperinceController::class, 'deleteExperience'])->name('deleteExperience');
+
+        // contact routes
+        Route::get('contact-form-details', [AdminContactController::class, 'Index'])->name('contactFormDetails');
     });
 });
 

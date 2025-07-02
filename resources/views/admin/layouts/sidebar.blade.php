@@ -30,7 +30,8 @@
           <span class="text">Experience</span>
       </a>
 
-      <a href="#" title="Contact Details">
+      <a href="{{ route('admin.contactFormDetails') }}" title="Contact Details"
+          class="{{ request()->routeIs('admin.contactFormDetails') ? 'active' : '' }}">
           <span class="material-icons">contact_phone</span>
           <span class="text">Contact Details</span>
       </a>
