@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin\Experince;
 use App\Models\Admin\Service;
 use App\Models\Admin\Skill;
 use Illuminate\Http\Request;
@@ -13,6 +14,7 @@ class HomeController extends Controller
         $title = 'Avinash Kumar - Website Developer';
         $skills = Skill::all();
         $services = Service::where('is_active', 1)->get();
-        return view('index', compact('title', 'skills', 'services'));
+        $experiences = Experince::orderBy('id', 'desc')->get();
+        return view('index', compact('title', 'skills', 'services', 'experiences'));
     }
 }

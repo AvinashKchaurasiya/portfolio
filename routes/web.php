@@ -43,9 +43,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         // experience routes
         Route::get('experiences', [ExperinceController::class, 'Index'])->name('experiences');
+        Route::get('experience-create', [ExperinceController::class, 'createExperience'])->name('createExperience');
         Route::post('experience-save', [ExperinceController::class, 'experienceSave'])->name('experienceSave');
         Route::get('edit-experience/{id}', [ExperinceController::class, 'editExperience'])->name('editExperience');
-        Route::post('update-experience/{id}', [ExperinceController::class, 'updateExperience'])->name('updateExperience');
+        Route::put('update-experience/{id}', [ExperinceController::class, 'updateExperience'])->name('updateExperience');
         Route::delete('delete-experience/{id}', [ExperinceController::class, 'deleteExperience'])->name('deleteExperience');
     });
 });

@@ -243,42 +243,28 @@
                     <!-- Experience -->
                     <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
                         <h3 class="resume-title">Professional Experience</h3>
+                        @if (isset($experiences) && count($experiences) > 0)
+                            @foreach ($experiences as $experience)
+                                <div class="resume-item">
+                                    @if ($experience->company === 'NA')
+                                        <h4>{{ $experience->title }}</h4>
+                                    @else
+                                        <h4>{{ $experience->title }} - {{ $experience->company }}</h4>
+                                    @endif
+                                    <h5>
+                                        {{ \Carbon\Carbon::parse($experience->from_date)->format('M Y') }} –
+                                        {{ $experience->to_date ? \Carbon\Carbon::parse($experience->to_date)->format('M Y') : 'Present' }}
+                                    </h5>
 
-                        <div class="resume-item">
-                            <h4>Web Developer – Internet Moguls</h4>
-                            <h5>Apr 2025 – Present</h5>
-                            <p><em>Delhi, India</em></p>
-                            <ul>
-                                <li>Designing and developing dynamic web applications for hospitality and event management
-                                    clients.</li>
-                                <li>Maintaining, optimizing, and enhancing legacy systems with modern technologies.</li>
-                                <li>Specialized in feature enhancements and system scalability.</li>
-                            </ul>
-                        </div>
-
-                        <div class="resume-item">
-                            <h4>Web Developer – Nirvaat Internet Pvt. Ltd.</h4>
-                            <h5>Apr 2024 – Apr 2025</h5>
-                            <p><em>Noida, India</em></p>
-                            <ul>
-                                <li>Worked on PHP, Laravel, Magento, MySQL, and React.js for multiple dynamic websites.</li>
-                                <li>Collaborated with teams to deliver seamless features and user experiences.</li>
-                                <li>Participated in code reviews and adhered to best practices.</li>
-                            </ul>
-                        </div>
-
-                        <div class="resume-item">
-                            <h4>Freelance Web Developer</h4>
-                            <h5>2021 – 2024</h5>
-                            <p><em>Remote</em></p>
-                            <ul>
-                                <li>Built and delivered websites for clients in real estate, transport, education, and
-                                    corporate sectors.</li>
-                                <li>Focused on full-stack development using Laravel, PHP, HTML, CSS, JS, jQuery, and SEO
-                                    techniques.</li>
-                                <li>Managed end-to-end development including UI, backend logic, database, and hosting.</li>
-                            </ul>
-                        </div>
+                                    <p><em>{{ $experience->location }}</em></p>
+                                    {!! $experience->description !!}
+                                </div>
+                            @endforeach
+                        @else
+                            <div class="resume-item">
+                                <p>I am a fresher.</p>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -501,7 +487,7 @@
                                 <!-- Icon image from DB -->
                                 <div class="icon flex-shrink-0 me-3">
                                     <img src="{{ URL::asset($service->icon) }}" alt="{{ $service->title }}"
-                                        style="width: 50px; height: 50px;">
+                                        style="width: 35px; height: 35px;">
                                 </div>
                                 <div>
                                     <!-- Service Title -->
@@ -509,7 +495,7 @@
                                         <a href="#" class="stretched-link">{{ $service->title }}</a>
                                     </h4>
                                     <!-- Service Description -->
-                                    <p class="description">{{ $service->description }}</p>
+                                    <p class="description" style="text-align:justify;">{{ $service->description }}</p>
                                 </div>
                             </div>
                         @endforeach

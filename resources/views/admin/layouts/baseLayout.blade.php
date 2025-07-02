@@ -17,7 +17,8 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <script src="{{ URL::asset('admin/assets/js/jquery-3.7.1.min.js') }}"></script>
-    <script src="https://cdn.tiny.cloud/1/izi8w6l6mn5tifdrblhk2h63gu64vadc7ecsudr8tfhhmu46/tinymce/7/tinymce.min.js"></script>
+    <script src="https://cdn.tiny.cloud/1/izi8w6l6mn5tifdrblhk2h63gu64vadc7ecsudr8tfhhmu46/tinymce/7/tinymce.min.js">
+    </script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             @if (Session::has('success'))

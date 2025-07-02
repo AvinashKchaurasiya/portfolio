@@ -25,7 +25,7 @@
       </a>
 
       <a href="{{ route('admin.experiences') }}" title="Experience"
-          class="{{ request()->routeIs('admin.experiences') || request()->routeIs('admin.editExperience') ? 'active' : '' }}">
+          class="{{ request()->routeIs('admin.experiences') || request()->routeIs('admin.editExperience') || request()->routeIs('admin.createExperience') ? 'active' : '' }}">
           <span class="material-icons">work_history</span>
           <span class="text">Experience</span>
       </a>
