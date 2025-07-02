@@ -8,52 +8,75 @@
 
 @section('content')
     <div id="mainContent" class="main">
-        <h3 class="mb-2">Services</h3>
+        <h3 class="mb-2">Clients</h3>
 
         <div class="row g-4">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <h5>Service List</h5>
+                        <h5>Client List</h5>
                         <a href="javascript:void(0);" class="btn btn-primary" data-mdb-toggle="modal"
-                            data-mdb-target="#addServiceModal">
-                            Add Service
+                            data-mdb-target="#addClientModal">
+                            Add Client
                         </a>
                     </div>
-                    <div class="modal fade" id="addServiceModal" tabindex="-1" aria-labelledby="addServiceModalLabel"
+                    <div class="modal fade" id="addClientModal" tabindex="-1" aria-labelledby="addClientModalLabel"
                         aria-hidden="true">
                         <div class="modal-dialog">
-                            <form action="{{ route('admin.serviceSave') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('admin.clientSave') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="addServiceModalLabel">Add Service</h5>
+                                        <h5 class="modal-title" id="addClientModalLabel">Add Client</h5>
                                         <button type="button" class="btn-close" data-mdb-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
 
-                                    <div class="modal-body">
+                                    <div class="modal-body" id="formWrapper">
                                         <div class="form-outline mb-4">
-                                            <input type="text" id="techName" name="name" class="form-control"
+                                            <input type="text" id="clientName" name="name" class="form-control"
                                                 required />
-                                            <label class="form-label" for="techName">Service Name</label>
-                                        </div>
-
-                                        <div class="form-outline mb-4">
-                                            <textarea class="form-control" id="techDesc" name="description" rows="3" required></textarea>
-                                            <label class="form-label" for="techDesc">Description</label>
-                                        </div>
-                                        <div class="form-outline mb-2">
-                                            <img id="iconPreview" src="{{ URL::asset('admin/images/image_preview.png') }}"
-                                                class="img-thumbnail"
-                                                style="width: 80px; height: 80px; object-fit: contain;" />
+                                            <label class="form-label" for="clientName">Client Name</label>
                                         </div>
                                         <div class="form-outline mb-4">
-                                            <input type="file" id="iconInput" name="icon" accept="image/*" hidden
-                                                onchange="previewIcon(event)" />
-                                            <label for="iconInput" class="btn btn-outline-primary btn-sm mt-2">
-                                                <i class="fas fa-upload me-1"></i> Upload Icon
-                                            </label>
+                                            <input type="text" id="companyName" name="company_name" class="form-control"
+                                                required />
+                                            <label class="form-label" for="companyName">Company Name</label>
+                                        </div>
+                                        <div class="form-outline mb-4">
+                                            <input type="email" id="clientEmail" name="email" class="form-control"
+                                                required />
+                                            <label class="form-label" for="clientEmail">Email</label>
+                                        </div>
+                                        <div class="form-outline mb-4">
+                                            <input type="text" id="clientPhone" name="phone" class="form-control"
+                                                required />
+                                            <label class="form-label" for="clientPhone">Phone</label>
+                                        </div>
+                                        <div class="form-outline mb-4">
+                                            <input type="text" id="clientAddress" name="address" class="form-control"
+                                                required />
+                                            <label class="form-label" for="clientAddress">Address</label>
+                                        </div>
+                                        <div class="form-outline mb-4">
+                                            <input type="text" id="clientCity" name="city" class="form-control"
+                                                required />
+                                            <label class="form-label" for="clientCity">City</label>
+                                        </div>
+                                        <div class="form-outline mb-4">
+                                            <input type="text" id="clientState" name="state" class="form-control"
+                                                required />
+                                            <label class="form-label" for="clientState">State</label>
+                                        </div>
+                                        <div class="form-outline mb-4">
+                                            <input type="text" id="clientCountry" name="country" class="form-control"
+                                                required />
+                                            <label class="form-label" for="clientCountry">Country</label>
+                                        </div>
+                                        <div class="form-outline mb-4">
+                                            <input type="text" id="clientPincode" name="pincode" class="form-control"
+                                                required />
+                                            <label class="form-label" for="clientPincode">Pincode</label>
                                         </div>
                                     </div>
 
@@ -72,44 +95,45 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Name</th>
-                                    <th>Icon</th>
-                                    <th>Description</th>
+                                    <th>Company Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Address</th>
                                     <th>Edit</th>
                                     <th>Status</th>
                                     <th>Delete</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($services as $service)
-                                    {{-- {{ dd($service->); }} --}}
+                                @foreach ($clients as $client)
                                     <tr>
-                                        <td>{{ $service->id }}</td>
-                                        <td>{{ $service->title }}</td>
-                                        <td>
-                                            <img src="{{ URL::asset($service->icon) }}" alt="{{ $service->title }}"
-                                                class="img-fluid" style="width: 50px; height: 50px;">
-                                        </td>
-                                        <td>{{ substr($service->description, 0, 150) }}...</td>
+                                        <td>{{ $client->id }}</td>
+                                        <td>{{ $client->name }}</td>
+                                        <td>{{ $client->company_name }}</td>
+                                        <td>{{ $client->email }}</td>
+                                        <td>{{ $client->phone }}</td>
+                                        <td>{{ $client->address }}, {{ $client->city }}, {{ $client->state }},
+                                            {{ $client->country }}-{{ $client->pincode }} </td>
                                         <td>
                                             <a href="javascript:void(0);" class="btn btn-warning btn-sm edit-btn"
-                                                data-href="{{ route('admin.editService', $service->id) }}">
+                                                data-href="{{ route('admin.editClient', $client->id) }}">
                                                 <i class="fas fa-edit me-1 fs-5"></i>
                                             </a>
                                         </td>
                                         <td>
-                                            <form action="{{ route('admin.updateStatus', $service->id) }}" method="POST"
+                                            <form action="{{ route('admin.updateStatus', $client->id) }}" method="POST"
                                                 class="d-inline">
                                                 @csrf
                                                 <input type="hidden" name="status"
-                                                    value="{{ $service->is_active ? 0 : 1 }}">
+                                                    value="{{ $client->is_active ? 0 : 1 }}">
                                                 <button type="button"
-                                                    class="btn status-btn btn-{{ $service->is_active ? 'success' : 'danger' }} btn-sm">
-                                                    {{ $service->is_active ? 'Active' : 'Inactive' }}
+                                                    class="btn status-btn btn-{{ $client->is_active ? 'success' : 'danger' }} btn-sm">
+                                                    {{ $client->is_active ? 'Active' : 'Inactive' }}
                                                 </button>
                                             </form>
                                         </td>
                                         <td>
-                                            <form action="{{ route('admin.deleteService', $service->id) }}" method="POST"
+                                            <form action="{{ route('admin.deleteClient', $client->id) }}" method="POST"
                                                 class="d-inline delete-form">
                                                 @csrf
                                                 @method('DELETE')
@@ -137,7 +161,7 @@
     </div>
     @if ($errors->any())
         <script>
-            const myModal = new mdb.Modal(document.getElementById('addServiceModal'));
+            const myModal = new mdb.Modal(document.getElementById('addClientModal'));
             myModal.show();
         </script>
     @endif
@@ -155,7 +179,7 @@
         }
 
         document.addEventListener("DOMContentLoaded", function() {
-            const form = document.getElementById("addServiceModal");
+            const form = document.getElementById("addClientModal");
             form.addEventListener("submit", function() {
                 document.getElementById("fullPageSpinner").classList.remove("d-none");
                 document.getElementById("addBtn").disabled = true;
@@ -214,7 +238,7 @@
 
                 Swal.fire({
                     title: 'Are you sure?',
-                    text: `You are about to ${newStatus} this service.`,
+                    text: `You are about to ${newStatus} this slient.`,
                     icon: 'question',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',

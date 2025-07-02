@@ -21,7 +21,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
         // clients routes
-        Route::get('clients', [ClientController::class, 'clients'])->name('clients');
+        Route::get('clients', [ClientController::class, 'Index'])->name('clients');
         Route::post('client-save', [ClientController::class, 'clientSave'])->name('clientSave');
         Route::get('edit-client/{id}', [ClientController::class, 'editClient'])->name('editClient');
         Route::post('update-client/{id}', [ClientController::class, 'updateClient'])->name('updateClient');
