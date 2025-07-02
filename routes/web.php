@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\ContactController as AdminContactController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ExperinceController;
@@ -19,6 +20,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::middleware('isAdminLogin')->group(function () {
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
+        // clients routes
+        Route::get('clients', [ClientController::class, 'clients'])->name('clients');
+        Route::post('client-save', [ClientController::class, 'clientSave'])->name('clientSave');
+        Route::get('edit-client/{id}', [ClientController::class, 'editClient'])->name('editClient');
+        Route::post('update-client/{id}', [ClientController::class, 'updateClient'])->name('updateClient');
+        Route::delete('delete-client/{id}', [ClientController::class, 'deleteClient'])->name('deleteClient');
 
         //skills routes
         Route::get('skills', [SkillController::class, 'Index'])->name('skills');
