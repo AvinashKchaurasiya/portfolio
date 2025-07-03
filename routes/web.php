@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\ContactController as AdminContactController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ExperinceController;
+use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SkillController;
 use App\Http\Controllers\Admin\TechnologyController;
@@ -26,6 +27,14 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('edit-client/{id}', [ClientController::class, 'editClient'])->name('editClient');
         Route::put('update-client/{id}', [ClientController::class, 'updateClient'])->name('updateClient');
         Route::delete('delete-client/{id}', [ClientController::class, 'deleteClient'])->name('deleteClient');
+
+        // projects routes
+        Route::get('projects', [ProjectController::class, 'projectsIndex'])->name('projects');
+        Route::get('project-create', [ProjectController::class, 'createProject'])->name('createProject');
+        Route::post('project-save', [ProjectController::class, 'projectSave'])->name('projectSave');
+        Route::get('edit-project/{id}', [ProjectController::class, 'editProject'])->name('editProject');
+        Route::put('update-project/{id}', [ProjectController::class, 'updateProject'])->name('updateProject');
+        Route::delete('delete-project/{id}', [ProjectController::class, 'deleteProject'])->name('deleteProject');
 
         //skills routes
         Route::get('skills', [SkillController::class, 'Index'])->name('skills');

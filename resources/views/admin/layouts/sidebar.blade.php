@@ -3,10 +3,12 @@
       <a href="{{ route('admin.dashboard') }}" title="Dashboard"
           class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}"><span
               class="material-icons">dashboard</span><span class="text">Dashboard</span></a>
-      <a href="{{ route('admin.clients') }}" class="{{ request()->routeIs('admin.clients') ? 'active' : '' }}"
+      <a href="{{ route('admin.clients') }}"
+          class="{{ request()->routeIs('admin.clients') || request()->routeIs('admin.editClient') ? 'active' : '' }}"
           title="Clients"><span class="material-icons">supervisor_account</span><span class="text">Clients</span></a>
-      <a href="#" title="projects"><span class="material-icons">folder</span><span
-              class="text">Projects</span></a>
+      <a href="{{ route('admin.projects') }}"
+          class="{{ request()->routeIs('admin.projects') || request()->routeIs('admin.createProject') || request()->routeIs('admin.editProject') ? 'active' : '' }}"
+          title="projects"><span class="material-icons">folder</span><span class="text">Projects</span></a>
       <a href="{{ route('admin.skills') }}" title="Skills"
           class="{{ request()->routeIs('admin.skills') || request()->routeIs('admin.editSkill') ? 'active' : '' }}">
           <span class="material-icons">psychology</span>
