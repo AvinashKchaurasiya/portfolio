@@ -8,21 +8,21 @@
                 <div class="card-summary">
                     <span class="material-icons">folder</span>
                     <h5>Projects</h5>
-                    <p>12 Active</p>
+                    <p><strong>12 Active</strong></p>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="card-summary">
                     <span class="material-icons">work_history</span>
                     <h5>Experince</h5>
-                    <p>4.3 Years</p>
+                    <p><strong>{{ $experienceData['totalExp'] }}</strong></p>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="card-summary">
                     <span class="material-icons">supervisor_account</span>
                     <h5>Clients</h5>
-                    <p>5</p>
+                    <p><strong>{{ $totalClients }}+</strong></p>
                 </div>
             </div>
             {{-- <div class="col-md-3">

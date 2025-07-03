@@ -49,10 +49,11 @@
                     <div class="col-lg-8 content">
                         <h2>Web Developer.</h2>
                         <p class="fst-italic py-3">
-                            I'm a passionate and results-driven <strong>Web Developer</strong> with over <strong>4.3 years
-                                of experience</strong>, including <strong>3 years of freelancing</strong> and <strong>1.3
-                                years of corporate experience</strong>. I enjoy transforming ideas into real, functional,
-                            and scalable web applications.
+                            I'm a passionate and results-driven <strong>Web Developer</strong> with over
+                            <strong>{{ $experienceData['totalExp'] }} of experience</strong>, including
+                            <strong>{{ $experienceData['freelanceExp'] }} of freelancing</strong> and
+                            <strong>{{ $experienceData['companyExp'] }} of corporate experience</strong>.
+                            I enjoy transforming ideas into real, functional, and scalable web applications.
                         </p>
                         <div class="row">
                             <div class="col-lg-6">
@@ -110,8 +111,8 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="stats-item">
                             <i class="bi bi-emoji-smile"></i>
-                            <span data-purecounter-start="0" data-purecounter-end="4" data-purecounter-duration="1"
-                                class="purecounter"></span>
+                            <span data-purecounter-start="0" data-purecounter-end="{{ $totalClients }}"
+                                data-purecounter-duration="1" class="purecounter"></span>
                             <p><strong>Happy Clients</strong></p>
                         </div>
                     </div>
@@ -194,7 +195,10 @@
                         <h3 class="resume-title">Summary</h3>
                         <div class="resume-item pb-0">
                             <h4>Avinash Kumar</h4>
-                            <p><em>Motivated PHP and Laravel Developer with 4.3+ years of experience (including freelance),
+                            <p><em>Motivated PHP and Laravel Developer with
+                                    <strong>{{ $experienceData['totalExp'] }}</strong> of
+                                    experience
+                                    (including freelance),
                                     focused on delivering robust and maintainable web applications. Skilled in backend
                                     development, debugging, third-party integration, and team collaboration.</em></p>
                             <ul>

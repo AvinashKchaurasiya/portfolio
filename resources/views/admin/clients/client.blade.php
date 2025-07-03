@@ -100,7 +100,6 @@
                                     <th>Phone</th>
                                     <th>Address</th>
                                     <th>Edit</th>
-                                    <th>Status</th>
                                     <th>Delete</th>
                                 </tr>
                             </thead>
@@ -113,24 +112,12 @@
                                         <td>{{ $client->email }}</td>
                                         <td>{{ $client->phone }}</td>
                                         <td>{{ $client->address }}, {{ $client->city }}, {{ $client->state }},
-                                            {{ $client->country }}-{{ $client->pincode }} </td>
+                                            {{ $client->country }}-{{ $client->postal_code }} </td>
                                         <td>
                                             <a href="javascript:void(0);" class="btn btn-warning btn-sm edit-btn"
                                                 data-href="{{ route('admin.editClient', $client->id) }}">
                                                 <i class="fas fa-edit me-1 fs-5"></i>
                                             </a>
-                                        </td>
-                                        <td>
-                                            <form action="{{ route('admin.updateStatus', $client->id) }}" method="POST"
-                                                class="d-inline">
-                                                @csrf
-                                                <input type="hidden" name="status"
-                                                    value="{{ $client->is_active ? 0 : 1 }}">
-                                                <button type="button"
-                                                    class="btn status-btn btn-{{ $client->is_active ? 'success' : 'danger' }} btn-sm">
-                                                    {{ $client->is_active ? 'Active' : 'Inactive' }}
-                                                </button>
-                                            </form>
                                         </td>
                                         <td>
                                             <form action="{{ route('admin.deleteClient', $client->id) }}" method="POST"
@@ -166,18 +153,6 @@
         </script>
     @endif
     <script>
-        function previewIcon(event) {
-            const input = event.target;
-            const reader = new FileReader();
-            reader.onload = function() {
-                const img = document.getElementById('iconPreview');
-                img.src = reader.result;
-            };
-            if (input.files[0]) {
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-
         document.addEventListener("DOMContentLoaded", function() {
             const form = document.getElementById("addClientModal");
             form.addEventListener("submit", function() {
@@ -225,30 +200,6 @@
                 setTimeout(() => {
                     window.location.href = this.getAttribute('data-href');
                 }, 1200);
-            });
-        });
-
-        // Handle status toggle
-
-        document.querySelectorAll('.status-btn').forEach(function(btn) {
-            btn.addEventListener('click', function() {
-                const form = this.closest('form');
-                const newStatus = form.querySelector('input[name="status"]').value == 1 ? 'activate' :
-                    'deactivate';
-
-                Swal.fire({
-                    title: 'Are you sure?',
-                    text: `You are about to ${newStatus} this slient.`,
-                    icon: 'question',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, confirm!'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        form.submit();
-                    }
-                });
             });
         });
     </script>

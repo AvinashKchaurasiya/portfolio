@@ -24,7 +24,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('clients', [ClientController::class, 'Index'])->name('clients');
         Route::post('client-save', [ClientController::class, 'clientSave'])->name('clientSave');
         Route::get('edit-client/{id}', [ClientController::class, 'editClient'])->name('editClient');
-        Route::post('update-client/{id}', [ClientController::class, 'updateClient'])->name('updateClient');
+        Route::put('update-client/{id}', [ClientController::class, 'updateClient'])->name('updateClient');
         Route::delete('delete-client/{id}', [ClientController::class, 'deleteClient'])->name('deleteClient');
 
         //skills routes
