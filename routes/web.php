@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\ContactController as AdminContactController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ExperinceController;
+use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SkillController;
@@ -17,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
     Route::post('login-proccess', [AuthController::class, 'loginProcess'])->name('loginProccess');
+    Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
     Route::middleware('isAdminLogin')->group(function () {
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -68,6 +70,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         // contact routes
         Route::get('contact-form-details', [AdminContactController::class, 'Index'])->name('contactFormDetails');
+
+        // profile routes
+        Route::get('profile-details', [ProfileController::class, 'profileDetails'])->name('profileDetails');
     });
 });
 

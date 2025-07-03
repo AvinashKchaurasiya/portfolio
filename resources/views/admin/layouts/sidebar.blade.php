@@ -39,6 +39,24 @@
       </a>
       <a href="#" title="Testimonials"><span class="material-icons">rate_review</span><span
               class="text">Testimonials</span></a>
+      <!-- Details Link (No Dropdown) -->
+      <a href="{{ route('admin.profileDetails') }}"
+          class="{{ request()->routeIs('admin.profileDetails') ? 'active' : '' }}" title="Profile Details">
+          <span class="material-icons">person</span>
+          <span class="text">Profile Details</span>
+      </a>
+      <a href="" class="{{ request()->routeIs('admin.contactDetails') ? 'active' : '' }}" title="Contact Info">
+          <span class="material-icons">contacts</span>
+          <span class="text">Contact Info</span>
+      </a>
+
+      <!-- Education Menu -->
+      <a href="" title="Education"
+          class="{{ request()->routeIs('admin.education') || request()->routeIs('admin.editEducation') ? 'active' : '' }}">
+          <span class="material-icons">school</span>
+          <span class="text">Education</span>
+      </a>
+
       <a href="#" title="Settings"><span class="material-icons">settings</span><span
               class="text">Settings</span></a>
   </div>

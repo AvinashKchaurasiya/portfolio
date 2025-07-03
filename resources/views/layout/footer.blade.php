@@ -1,6 +1,6 @@
  <footer id="footer" class="footer position-relative light-background">
 
-     <div class="container">
+     {{-- <div class="container">
          <div class="copyright text-center ">
              <p>© <span>Copyright</span> <strong class="px-1 sitename">iPortfolio</strong> <span>All Rights
                      Reserved</span></p>
@@ -12,6 +12,6 @@
              <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
              Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
          </div>
-     </div>
+     </div> --}}
 
  </footer>
