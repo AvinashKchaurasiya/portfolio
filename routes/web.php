@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\ContactController as AdminContactController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\EducationController;
 use App\Http\Controllers\Admin\ExperinceController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ProjectController;
@@ -73,6 +74,18 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         // profile routes
         Route::get('profile-details', [ProfileController::class, 'profileDetails'])->name('profileDetails');
+        Route::post('save-profile-image', [ProfileController::class, 'saveProfileImage'])->name('saveProfileImage');
+        Route::PUT('save-profile-details', [ProfileController::class, 'saveProfileDetails'])->name('saveProfileDetails');
+        Route::PUT('save-profile-social-links', [ProfileController::class, 'saveProfileSocialLinks'])->name('saveProfileSocialLinks');
+        Route::PUT('save-profile-resume', [ProfileController::class, 'saveProfileResume'])->name('saveProfileResume');
+
+        //education routes
+        Route::get('educations', [EducationController::class, 'educationIndex'])->name('educations');
+        Route::get('education-create', [EducationController::class, 'createEducation'])->name('createEducation');
+        Route::post('education-save', [EducationController::class, 'educationSave'])->name('educationSave');
+        Route::get('edit-education/{id}', [EducationController::class, 'editEducation'])->name('editEducation');
+        Route::put('update-education/{id}', [EducationController::class, 'updateEducation'])->name('updateEducation');
+        Route::delete('delete-education/{id}', [EducationController::class, 'deleteEducation'])->name('deleteEducation');
     });
 });
 
