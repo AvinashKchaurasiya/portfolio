@@ -6,14 +6,14 @@
             <img src="{{ URL::asset('assets/img/hero-bg.png') }}" alt="" data-aos="fade-in" class="">
 
             <div class="container" data-aos="fade-up" data-aos-delay="100">
-                <h2>Avinash Kumar</h2>
+                <h2>{{ $personalInfo->name ?? 'Avinash Kumar' }}</h2>
                 <p class="mb-2">
                     I'm <span class="typed" data-typed-items="Website Designer, Website Developer">Website Developer</span>
                     <span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span>
                 </p>
                 <div class="mt-4">
-                    <a href="{{ URL::asset('assets/resume/Avinash-Kumar-Web Developer.pdf') }}" target="_blank"
-                        class="btn btn-outline-light me-2">
+                    <a href="{{ $personalInfo->resume ? URL::asset($personalInfo->resume) : URL::asset('assets/resume/Avinash-Kumar-Web Developer.pdf') }}"
+                        target="_blank" class="btn btn-outline-light me-2">
                         <i class="bi bi-box-arrow-up-right me-1"></i> View Resume
                     </a>
                     <a href="#contact" class="btn btn-outline-light">
@@ -44,7 +44,8 @@
 
                 <div class="row gy-4 justify-content-center">
                     <div class="col-lg-4">
-                        <img src="{{ URL::asset('assets/img/about-logo.png') }}" class="img-fluid" alt="">
+                        <img src="{{ $personalInfo->image ? URL::asset($personalInfo->image) : URL::asset('assets/img/about-logo.png') }}"
+                            class="img-fluid" alt="">
                     </div>
                     <div class="col-lg-8 content">
                         <h2>Web Developer.</h2>
@@ -61,12 +62,14 @@
                                     <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>10 Aug
                                             2001</span></li>
                                     <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong>
-                                        <a href="https://z1iinnovation.com/" target="_blank">www.z1iinnovation.com</a>
+                                        <a href="{{ $personalInfo->website ? URL::asset($personalInfo->website) : 'https://www.z1iinnovation.com' }}"
+                                            target="_blank">{{ $personalInfo->website ?? 'www.z1iinnovation.com' }}</a>
                                     </li>
                                     <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong>
-                                        <span>+91-8650163913</span>
+                                        <span>{{ $personalInfo->mobile ?? '+91-8650163913' }}</span>
                                     </li>
-                                    <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Delhi, India</span>
+                                    <li><i class="bi bi-chevron-right"></i> <strong>City:</strong>
+                                        <span>{{ $personalInfo->location ?? 'Delhi' }}, India</span>
                                     </li>
                                 </ul>
                             </div>
@@ -80,10 +83,12 @@
 
                                     <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>{{ $age }}
                                             years</span></li>
-                                    <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>B.Tech (Computer
-                                            Science & Engineering)</span></li>
+                                    <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong>
+                                        <span>{{ $latestEducation->cource ?? 'B.Tech' }} -
+                                            ({{ $latestEducation->specialization ?? 'Computer Science & Engineering' }})</span>
+                                    </li>
                                     <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong>
-                                        <span>avinash8564kumar@gmail.com</span>
+                                        <span>{{ $personalInfo->email ?? 'avinash8564kumar@gmail.com' }}</span>
                                     </li>
                                     <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong>
                                         <span>Available</span>
@@ -165,8 +170,8 @@
                                 <div class="card skill-card shadow h-100">
                                     <div class="card-body">
                                         <div class="skill-icon mb-3 text-center">
-                                            <img src="{{ asset($skill->icon) }}" alt="{{ $skill->name }}" class="img-fluid"
-                                                style="width: 60px; height: 60px;">
+                                            <img src="{{ asset($skill->icon) }}" alt="{{ $skill->name }}"
+                                                class="img-fluid" style="width: 60px; height: 60px;">
                                         </div>
                                         <h5 class="card-title text-center">{{ $skill->name }}</h5>
                                     </div>
@@ -202,46 +207,36 @@
                                     focused on delivering robust and maintainable web applications. Skilled in backend
                                     development, debugging, third-party integration, and team collaboration.</em></p>
                             <ul>
-                                <li>Noida, India</li>
-                                <li>+91-8650163913</li>
-                                <li>avinash8564kumar@gmail.com</li>
+                                <li>{{ $personalInfo->location ?? 'Delhi' }}, India</li>
+                                <li>{{ $personalInfo->mobile ?? '+91-8650163913' }}</li>
+                                <li>{{ $personalInfo->email ?? 'avinash8564kumar@gmail.com' }}</li>
                             </ul>
                         </div>
 
                         <h3 class="resume-title">Education</h3>
 
-                        <div class="resume-item">
-                            <h4>B.Tech – Computer Science & Engineering</h4>
-                            <h5>2021 – 2024</h5>
-                            <p><em>Kanpur Institute of Technology, Kanpur</em></p>
-                            <p>
-                                Studied core subjects like Data Structures, Algorithms, Web Technologies, and Software
-                                Engineering. Gained practical skills in backend development using PHP and Laravel.
-                                <br><br>
-                                <strong>Mini Project:</strong> Developed a <em>Quiz Mobile Application</em> using Android
-                                and Firebase for real-time quiz taking and scoring.<br>
-                                <strong>Major Project:</strong> Built a fully functional <em>School ERP System</em> with
-                                modules like student registration, attendance, exam management, and admin control using
-                                Laravel and MySQL.
-                            </p>
-                        </div>
-
-                        <div class="resume-item">
-                            <h4>Diploma – Computer Science & Engineering</h4>
-                            <h5>2017 – 2020</h5>
-                            <p><em>Government Polytechnic, Saharanpur</em></p>
-                            <p>
-                                Built a strong foundation in programming, database management, and web fundamentals. Worked
-                                on real-time academic projects and learned the basics of software development.
-                                <br><br>
-                                <strong>Mini Project:</strong> Created a <em>Hotel Management System</em> using PHP, MySQL,
-                                HTML, CSS, JavaSCript to
-                                manage bookings, customer details, and billing.<br>
-                                <strong>Major Project:</strong> Developed a <em>Library Management System</em> using PHP
-                                and MySQL to automate book issuing, returns, and student record tracking.
-                            </p>
-                        </div>
-
+                        @if (isset($educations) && count($educations) > 0)
+                            @foreach ($educations as $education)
+                                <div class="resume-item">
+                                    <h4>{{ $education->cource }} -
+                                        ({{ $education->specialization }})
+                                    </h4>
+                                    <h5>
+                                        {{ \Carbon\Carbon::parse($education->from_date)->format('Y') }}
+                                        –
+                                        {{ $education->to_date ? \Carbon\Carbon::parse($education->to_date)->format('Y') : 'Present' }}
+                                    </h5>
+                                    <p><em>{{ $education->collage_name ?? '' }}</em></p>
+                                    <p>{!! $education->description ?? '' !!}</p>
+                                    <p><strong>Mini Project:</strong> {{ $education->mini_project }}</p>
+                                    <p><strong>Major Project:</strong> {{ $education->major_project }}</p>
+                                </div>
+                            @endforeach
+                        @else
+                            <div class="resume-item">
+                                <p>No education records found.</p>
+                            </div>
+                        @endif
                     </div>
 
                     <!-- Experience -->
@@ -644,21 +639,21 @@
                                 <i class="bi bi-geo-alt flex-shrink-0"></i>
                                 <div>
                                     <h3>Address</h3>
-                                    <p>Noida, Uttar Pradesh, India</p>
+                                    <p>{{ $personalInfo->location ?? 'Delhi' }}, Uttar Pradesh, India</p>
                                 </div>
                             </div>
                             <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
                                 <i class="bi bi-telephone flex-shrink-0"></i>
                                 <div>
                                     <h3>Call Me</h3>
-                                    <p>+91 8650163913</p>
+                                    <p>{{ $personalInfo->mobile ?? '+91 8650163913' }}</p>
                                 </div>
                             </div>
                             <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
                                 <i class="bi bi-envelope flex-shrink-0"></i>
                                 <div>
                                     <h3>Email Me</h3>
-                                    <p>avinash8564kumar@gmail.com</p>
+                                    <p>{{ $personalInfo->email ?? 'avinash8564kumar@gmail.com' }}</p>
                                 </div>
                             </div>
                         </div>

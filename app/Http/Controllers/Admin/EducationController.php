@@ -99,4 +99,14 @@ class EducationController extends Controller
             return redirect()->back()->with('error', 'Failed to update education. Please try again.');
         }
     }
+
+    // delete education
+    public function deleteEducation($id){
+        $education = Education::findOrFail($id);
+        if($education->delete()){
+            return redirect()->route('admin.educations')->with('success', 'Education deleted successfully.');
+        }else{
+            return redirect()->back()->with('error', 'Failed to delete education. Please try again.');
+        }
+    }
 }

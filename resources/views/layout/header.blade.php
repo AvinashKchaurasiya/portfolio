@@ -10,8 +10,8 @@
     </a>
 
     <div class="social-links text-center">
-        <a href="https://www.linkedin.com/in/avinash-kumar-websitedevelopmentexpert/" class="linkedin"
-            target="_blank"><i class="bi bi-linkedin"></i></a>
+        <a href="{{ $personalInfo->linkedin_url ?? 'https://www.linkedin.com/in/avinash-kumar-websitedevelopmentexpert/' }}"
+            class="linkedin" target="_blank"><i class="bi bi-linkedin"></i></a>
     </div>
 
     <nav id="navmenu" class="navmenu">

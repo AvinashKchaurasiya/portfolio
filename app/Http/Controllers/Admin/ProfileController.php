@@ -119,7 +119,7 @@ class ProfileController extends Controller
 
         if ($request->hasFile('resume')) {
             $file = $request->file('resume');
-            $fileName = time() . '.' . $file->getClientOriginalExtension();
+            $fileName = 'Avinash-Kumar-Web-Developer' . '.' . $file->getClientOriginalExtension();
             $file->move(public_path('admin/resumes'), $fileName);
             $profile->resume = 'admin/resumes/' . $fileName;
         }
