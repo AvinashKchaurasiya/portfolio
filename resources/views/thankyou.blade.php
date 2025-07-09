@@ -8,7 +8,7 @@
                 <div class="row px-4">
                     <div class="col-md-8 ">
                         <h2>Thank You!</h2>
-                        <p>Thank you for contacting us! We will get back to you shortly.</p>
+                        <p>Thank you for contacting with me! I will get back to you shortly.</p>
                         <a href="{{ route('home') }}" class="btn btn-light">Go Back to Home</a>
                     </div>
                 </div>
