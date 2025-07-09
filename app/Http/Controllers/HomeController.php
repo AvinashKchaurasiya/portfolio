@@ -7,6 +7,7 @@ use App\Models\Admin\Client;
 use App\Models\Admin\Education;
 use App\Models\Admin\Experince;
 use App\Models\Admin\Profile;
+use App\Models\Admin\Project;
 use App\Models\Admin\Service;
 use App\Models\Admin\Skill;
 use Carbon\Carbon;
@@ -52,6 +53,15 @@ class HomeController extends Controller
         // Get all education records
         $educations = Education::orderBy('id', 'desc')->get();
 
-        return view('index', compact('title', 'skills', 'services', 'experiences','experienceData', 'totalClients', 'personalInfo', 'educations', 'latestEducation'));
+        $projects = Project::with('service')->get();
+
+        return view('index', compact('title', 'skills', 'services', 'experiences','experienceData', 'totalClients', 'personalInfo', 'educations', 'latestEducation', 'projects'));
+    }
+
+    public function projectDetails($id)
+    {
+        $title = 'Project Details';
+        $project = Project::with('service')->findOrFail($id);
+        return view('project-details', compact('title', 'project'));
     }
 }

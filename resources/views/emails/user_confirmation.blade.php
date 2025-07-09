@@ -19,7 +19,7 @@
                     </tr>
                     <tr>
                         <td style="padding: 30px;">
-                            <p>We’ve received your message and will get back to you shortly.</p>
+                            <p>I’ve received your message and will get back to you shortly.</p>
                             <p><strong>Your Message:</strong></p>
                             <div style="background: #f1f1f1; padding: 15px; border-radius: 6px;">
                                 {{ $data['message'] }}

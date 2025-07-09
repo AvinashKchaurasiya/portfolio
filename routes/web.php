@@ -93,4 +93,5 @@ Route::prefix('admin')->name('admin.')->group(function () {
 // frontend routes
 Route::get("/", [HomeController::class, "index"])->name("home");
 Route::post("contact-form-save", [ContactController::class, "contactFormSave"])->name("contactFormSave");
+Route::get('project-details/{id}', [HomeController::class, 'projectDetails'])->name('projectDetails');
 Route::get("thank-you", [ContactController::class, "thankYou"])->name("thankYou");
