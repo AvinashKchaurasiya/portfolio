@@ -12,7 +12,7 @@
                             <div class="col-md-8">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $project->project_name }} - {{ $project->service->title }}</h5>
-                                    @if($project->url == '')
+                                    @if($project->url != '')
                                         <a href="{{ $project->url  }}" style="text-decoration: none;">{{ $project->url }}</a>
                                     @endif
                                     <hr/>
