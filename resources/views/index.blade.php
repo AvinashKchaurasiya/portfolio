@@ -1,698 +1,480 @@
-@extends('layout.baseApp')
+@extends('layout.portfolio')
+
 @section('content')
-    <main class="main">
-        <section id="hero" class="hero section dark-background">
+    @php
+        $fullName = $personalInfo->name ?? 'Avinash Kumar';
+        $nameParts = preg_split('/\s+/', trim($fullName), 2, PREG_SPLIT_NO_EMPTY);
+        $firstName = $nameParts[0] ?? 'Avinash';
+        $lastName = $nameParts[1] ?? 'Kumar';
 
-            <img src="{{ URL::asset('assets/img/hero-bg.png') }}" alt="" data-aos="fade-in" class="">
+        $birthdate = \Carbon\Carbon::createFromDate(2001, 8, 10);
+        $age = $birthdate->age;
 
-            <div class="container" data-aos="fade-up" data-aos-delay="100">
-                <h2>{{ $personalInfo->name ?? 'Avinash Kumar' }}</h2>
-                <p class="mb-2">
-                    I'm <span class="typed" data-typed-items="Website Designer, Website Developer">Website Developer</span>
-                    <span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span>
-                </p>
-                <div class="mt-4">
-                    <a href="{{ $personalInfo->resume ? URL::asset($personalInfo->resume) : URL::asset('assets/resume/Avinash-Kumar-Web Developer.pdf') }}"
-                        target="_blank" class="btn btn-outline-light me-2">
-                        <i class="bi bi-box-arrow-up-right me-1"></i> View Resume
-                    </a>
-                    <a href="#contact" class="btn btn-outline-light">
-                        <i class="bi bi-envelope me-1"></i> Contact Me
-                    </a>
+        preg_match('/(\d+)/', $experienceData['totalExp'] ?? '', $expYearsMatch);
+        $heroYears = isset($expYearsMatch[1]) ? max(1, (int) $expYearsMatch[1]) : 5;
+
+        $companyJobs = isset($experiences)
+            ? $experiences->filter(function ($e) {
+                return strtolower((string) $e->company) !== 'na';
+            })
+            : collect();
+        $companyCount = $companyJobs->count();
+
+        $resumeUrl = !empty($personalInfo->resume)
+            ? asset($personalInfo->resume)
+            : asset('admin/resumes/Avinash-Kumar-Web-Developer.pdf');
+
+        $profileImg = !empty($personalInfo->image)
+            ? asset($personalInfo->image)
+            : asset('assets/img/about-logo.png');
+
+        $dotStyles = [
+            '',
+            'background:var(--blue);box-shadow:0 0 12px var(--blue)',
+            'background:var(--purple);box-shadow:0 0 12px var(--purple)',
+            'background:var(--muted);box-shadow:0 0 12px rgba(136,146,164,0.5)',
+        ];
+    @endphp
+
+    @include('layout.partials.portfolio-chrome', ['resumeUrl' => $resumeUrl])
+
+    <section id="hero">
+        <div class="container hero-shell">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                Available for opportunities
+            </div>
+            <div class="hero-name">
+                <span>{{ $firstName }}</span>
+                <span>{{ $lastName }}</span>
+            </div>
+            <div class="hero-role">
+                &gt; <span id="typed-text"></span><span class="cursor-blink"></span>
+            </div>
+            <p class="hero-desc">
+                PHP &amp; Laravel specialist building
+                <strong>scalable web applications</strong>, RESTful APIs, and ERP
+                systems. {{ $heroYears }}+ years of turning complex problems into elegant digital
+                solutions.
+            </p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-num">{{ $heroYears }}+</div>
+                    <div class="stat-label">Years Exp.</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num">{{ max(1, $companyCount) }}+</div>
+                    <div class="stat-label">Companies</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num">{{ isset($skills) ? count($skills) : 0 }}+</div>
+                    <div class="stat-label">Skills</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num">∞</div>
+                    <div class="stat-label">Coffee ☕</div>
                 </div>
             </div>
-        </section>
-
-
-        <!-- About Section -->
-        <section id="about" class="about section">
-            <div class="container section-title" data-aos="fade-up">
-                <h2>About</h2>
-                <p>
-                    I am a passionate <strong>Web Developer and Designer</strong> with a strong foundation in both frontend
-                    and backend technologies. With a keen eye for detail and a creative mindset, I craft visually appealing,
-                    user-friendly, and fully responsive websites that not only look great but also perform seamlessly.
-                </p>
-                <p>
-                    From designing elegant frontend structures to developing dynamic web applications, I specialize in
-                    turning ideas into real digital experiences. I have hands-on experience in technologies like
-                    <strong>HTML, CSS, JavaScript, jQuery, PHP, Laravel, MySQL</strong>, and popular frameworks.
-                </p>
+            <div class="hero-btns">
+                <a href="#portfolio" class="btn-primary">View My Work</a>
+                <a href="#contact" class="btn-ghost">Get In Touch</a>
             </div>
+        </div>
 
-            <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-                <div class="row gy-4 justify-content-center">
-                    <div class="col-lg-4">
-                        <img src="{{ $personalInfo->image ? URL::asset($personalInfo->image) : URL::asset('assets/img/about-logo.png') }}"
-                            class="img-fluid" alt="">
-                    </div>
-                    <div class="col-lg-8 content">
-                        <h2>Web Developer.</h2>
-                        <p class="fst-italic py-3">
-                            I'm a passionate and results-driven <strong>Web Developer</strong> with over
-                            <strong>{{ $experienceData['totalExp'] }} of experience</strong>, including
-                            <strong>{{ $experienceData['freelanceExp'] }} of freelancing</strong> and
-                            <strong>{{ $experienceData['companyExp'] }} of corporate experience</strong>.
-                            I enjoy transforming ideas into real, functional, and scalable web applications.
-                        </p>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <ul>
-                                    <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>10 Aug
-                                            2001</span></li>
-                                    <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong>
-                                        <a href="{{ $personalInfo->website ? URL::asset($personalInfo->website) : 'https://www.z1iinnovation.com' }}"
-                                            target="_blank">{{ $personalInfo->website ?? 'www.z1iinnovation.com' }}</a>
-                                    </li>
-                                    <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong>
-                                        <span>{{ $personalInfo->mobile ?? '+91-8650163913' }}</span>
-                                    </li>
-                                    <li><i class="bi bi-chevron-right"></i> <strong>City:</strong>
-                                        <span>{{ $personalInfo->location ?? 'Delhi' }}, India</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-lg-6">
-                                <ul>
-                                    @php
-                                        use Carbon\Carbon;
-                                        $birthdate = Carbon::createFromDate(2001, 8, 10);
-                                        $age = $birthdate->age;
-                                    @endphp
-
-                                    <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>{{ $age }}
-                                            years</span></li>
-                                    <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong>
-                                        <span>{{ $latestEducation->cource ?? 'B.Tech' }} -
-                                            ({{ $latestEducation->specialization ?? 'Computer Science & Engineering' }})</span>
-                                    </li>
-                                    <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong>
-                                        <span>{{ $personalInfo->email ?? 'avinash8564kumar@gmail.com' }}</span>
-                                    </li>
-                                    <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong>
-                                        <span>Available</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <p class="py-3">
-                            I have developed a wide range of web solutions including ERP systems, e-commerce platforms,
-                            transport company websites, real estate listing portals, and IT company profiles. I specialize
-                            in <strong>HTML, CSS, JavaScript, jQuery, PHP, Laravel, MySQL</strong> and believe in writing
-                            clean, optimized, and scalable code. My focus is always on building reliable, secure, and
-                            user-friendly web experiences.
-                        </p>
-                    </div>
-
+        <div class="hero-3d-card">
+            <div class="code-card">
+                <div class="code-header">
+                    <div class="dot r"></div>
+                    <div class="dot y"></div>
+                    <div class="dot g"></div>
+                    <span class="code-file">ApiController.php</span>
                 </div>
-
-            </div>
-
-        </section>
-        <section id="stats" class="stats section">
-            <div class="container" data-aos="fade-up" data-aos-delay="100">
-                <div class="row gy-4">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="stats-item">
-                            <i class="bi bi-emoji-smile"></i>
-                            <span data-purecounter-start="0" data-purecounter-end="{{ $totalClients }}"
-                                data-purecounter-duration="1" class="purecounter"></span>
-                            <p><strong>Happy Clients</strong></p>
-                        </div>
+                <div class="code-body">
+                    <div><span class="ln">01</span><span class="cm">// Government API — RV Solutions</span></div>
+                    <div><span class="ln">02</span><span class="kw">class </span><span class="cn">ApiController</span>
                     </div>
-
-                    <div class="col-lg-3 col-md-6">
-                        <div class="stats-item">
-                            <i class="bi bi-journal-richtext"></i>
-                            <span data-purecounter-start="0" data-purecounter-end="8" data-purecounter-duration="1"
-                                class="purecounter"></span>
-                            <p><strong>Projects</strong></p>
-                        </div>
-                    </div>
-
-                    {{-- <div class="col-lg-3 col-md-6">
-                        <div class="stats-item">
-                            <i class="bi bi-headset"></i>
-                            <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1"
-                                class="purecounter"></span>
-                            <p><strong>Hours Of Support</strong> <span>aut commodi quaerat</span></p>
-                        </div>
-                    </div> --}}
-
-                    <div class="col-lg-3 col-md-6">
-                        <div class="stats-item">
-                            <i class="bi bi-people"></i>
-                            <span data-purecounter-start="0" data-purecounter-end="2" data-purecounter-duration="1"
-                                class="purecounter"></span>
-                            <p><strong>Hard Workers</strong></p>
-                        </div>
-                    </div>
-
+                    <div><span class="ln">03</span><span class="op">{</span></div>
+                    <div><span class="ln">04</span>&nbsp;&nbsp;<span class="kw">public function </span><span
+                            class="fn">store</span><span class="op">(</span><span class="cn">Request</span> <span
+                            class="op">$req)</span></div>
+                    <div><span class="ln">05</span>&nbsp;&nbsp;<span class="op">{</span></div>
+                    <div><span class="ln">06</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="op">$req-&gt;</span><span
+                            class="fn">validate</span><span class="op">([</span></div>
+                    <div><span class="ln">07</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                            class="str">'data'</span> <span class="op">=&gt;</span> <span
+                            class="str">'required|json'</span></div>
+                    <div><span class="ln">08</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="op">]);</span></div>
+                    <div><span class="ln">09</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return </span><span
+                            class="cn">Response</span><span class="op">::</span><span class="fn">success</span><span
+                            class="op">();</span></div>
+                    <div><span class="ln">10</span>&nbsp;&nbsp;<span class="op">}</span></div>
+                    <div><span class="ln">11</span><span class="op">}</span></div>
                 </div>
-
             </div>
+        </div>
+        </div>
 
-        </section>
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
 
-
-        <section id="skills" class="skills section light-background">
-            <div class="container section-title" data-aos="fade-up">
-                <h2>Skills</h2>
-                <p>I have hands-on experience in both frontend and backend development. Below are the technologies I work
-                    with regularly:</p>
+    <section id="about">
+        <div class="container">
+        <div class="section-header fade-up">
+            <span class="section-tag">// 01. about_me</span>
+            <h2 class="section-title">Who Am <span>I?</span></h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="about-grid">
+            <div class="about-avatar fade-in">
+                <div style="position:relative;display:inline-block">
+                    <div class="avatar-border"></div>
+                    <div class="avatar-frame">
+                        <img src="{{ $profileImg }}" alt="{{ $fullName }}" class="avatar-img" width="320"
+                            height="380">
+                        <div class="avatar-overlay"></div>
+                        <div class="avatar-overlay2"></div>
+                        <div class="avatar-scan"></div>
+                        <div class="avatar-scanline"></div>
+                        <div class="corner tl"></div>
+                        <div class="corner tr"></div>
+                        <div class="corner bl"></div>
+                        <div class="corner br"></div>
+                    </div>
+                </div>
+                <div class="about-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">Location</div>
+                        <div class="info-value">{{ $personalInfo->location ?? 'Noida' }}, India</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Age</div>
+                        <div class="info-value">{{ $age }} years</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Birthday</div>
+                        <div class="info-value">10 Aug 2001</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Degree</div>
+                        <div class="info-value">{{ $latestEducation->cource ?? 'B.Tech' }}
+                            ({{ $latestEducation->specialization ?? 'CSE' }})</div>
+                    </div>
+                    <div class="info-item" style="grid-column:span 2">
+                        <div class="info-label">Email</div>
+                        <div class="info-value" style="font-size:0.82rem">
+                            {{ $personalInfo->email ?? 'avinashchaurasiya@zohomail.in' }}</div>
+                    </div>
+                </div>
             </div>
-            <div class="container" data-aos="fade-up" data-aos-delay="100">
-                <div class="row skills-content skills-animation">
-                    @if (isset($skills) && count($skills) > 0)
-                        @foreach ($skills as $skill)
-                            <div class="col-md-2 col-sm-6 mb-4">
-                                <div class="card skill-card shadow h-100">
-                                    <div class="card-body">
-                                        <div class="skill-icon mb-3 text-center">
-                                            <img src="{{ asset($skill->icon) }}" alt="{{ $skill->name }}"
-                                                class="img-fluid" style="width: 60px; height: 60px;">
-                                        </div>
-                                        <h5 class="card-title text-center">{{ $skill->name }}</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    @else
-                        <div class="col-12">
-                            <p>No skills found.</p>
+            <div class="fade-up">
+                <p class="about-text">
+                    I'm a passionate <strong>Full-Stack Web Developer</strong> with
+                    <strong>{{ $experienceData['totalExp'] ?? '5+ years' }} of hands-on experience</strong> building web
+                    applications that scale. My journey started in 2021 with freelance
+                    projects — real estate portals, transport websites, corporate
+                    profiles — and has grown into developing
+                    <strong>government-grade REST APIs</strong> at RV Solutions.
+                </p>
+                <p class="about-text">
+                    My stack revolves around <strong>PHP &amp; Laravel</strong> on the
+                    backend, with solid frontend skills in
+                    <strong>JavaScript, jQuery, and Bootstrap</strong>. I write clean,
+                    maintainable code with a strong focus on
+                    <strong>security, performance, and scalability</strong>.
+                </p>
+                <p class="about-text">
+                    Whether it's architecting an ERP system from scratch or optimizing a
+                    slow API endpoint, I bring both
+                    <strong>creative problem-solving</strong> and
+                    <strong>engineering discipline</strong> to every challenge.
+                </p>
+                <div class="freelance-badge">
+                    <span class="badge-dot" style="width:6px;height:6px"></span>
+                    Open to Full-Time Roles &amp; Freelance
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+        <div class="section-header fade-up">
+            <span class="section-tag">// 02. tech_stack</span>
+            <h2 class="section-title">Skills &amp; <span>Technologies</span></h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="skills-grid">
+            @forelse ($skills ?? [] as $skill)
+                <div class="skill-card fade-up">
+                    <div class="skill-icon">
+                        <img src="{{ asset($skill->icon) }}" alt="{{ $skill->name }}">
+                    </div>
+                    <div class="skill-name">{{ $skill->name }}</div>
+                </div>
+            @empty
+                <p class="about-text" style="grid-column:1/-1">No skills added yet.</p>
+            @endforelse
+        </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+        <div class="section-header fade-up">
+            <span class="section-tag">// 03. work_experience</span>
+            <h2 class="section-title">Career <span>Journey</span></h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="timeline">
+            @forelse ($experiences ?? [] as $experience)
+                @php
+                    $dotStyle = $dotStyles[$loop->index % count($dotStyles)];
+                    $isCurrent = !empty($experience->currently_working);
+                    $fromLabel = \Carbon\Carbon::parse($experience->from_date)->format('M Y');
+                    $toLabel = $isCurrent
+                        ? 'Present'
+                        : ($experience->to_date
+                            ? \Carbon\Carbon::parse($experience->to_date)->format('M Y')
+                            : 'Present');
+                    $isFreelance = strtolower((string) $experience->company) === 'na';
+                    $companyLine = $isFreelance
+                        ? '💻 Remote — Self Employed'
+                        : '🏢 ' . $experience->company . ($experience->location ? ' — ' . $experience->location : '');
+                @endphp
+                <div class="timeline-item fade-up">
+                    <div class="timeline-dot" @if ($dotStyle) style="{{ $dotStyle }}" @endif></div>
+                    <div class="tl-header">
+                        <div>
+                            <div class="tl-role">{{ $experience->title }}</div>
+                            <div class="tl-company">{{ $companyLine }}</div>
                         </div>
+                        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;align-items:center">
+                            @if ($isCurrent)
+                                <span class="tl-current">● Current</span>
+                            @endif
+                            <span class="tl-date">{{ $fromLabel }} – {{ $toLabel }}</span>
+                        </div>
+                    </div>
+                    <div class="tl-desc">{!! $experience->description !!}</div>
+                </div>
+            @empty
+                <p class="about-text">No experience entries yet.</p>
+            @endforelse
+        </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="container">
+        <div class="section-header fade-up">
+            <span class="section-tag">// 04. education</span>
+            <h2 class="section-title">Academic <span>Background</span></h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="edu-grid">
+            @forelse ($educations ?? [] as $education)
+                <div class="edu-card fade-up">
+                    <div class="edu-year">
+                        {{ \Carbon\Carbon::parse($education->from_date)->format('Y') }} –
+                        {{ $education->to_date ? \Carbon\Carbon::parse($education->to_date)->format('Y') : 'Present' }}
+                    </div>
+                    <div class="edu-degree">{{ $education->cource }} —
+                        {{ $education->specialization }}</div>
+                    <div class="edu-inst">{{ $education->collage_name ?? '' }}</div>
+                    @if (!empty($education->description))
+                        <div class="edu-projects" style="margin-bottom:1rem;font-size:0.85rem;color:var(--muted)">
+                            {!! $education->description !!}</div>
                     @endif
-                </div>
-            </div>
-        </section>
-
-        <section id="resume" class="resume section">
-            <div class="container section-title" data-aos="fade-up">
-                <h2>Resume</h2>
-                <p>A passionate and experienced PHP Laravel Web Developer with a strong background in backend and frontend
-                    development, specialized in crafting efficient, scalable, and SEO-friendly web applications.</p>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <!-- Summary & Education -->
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                        <h3 class="resume-title">Summary</h3>
-                        <div class="resume-item pb-0">
-                            <h4>Avinash Kumar</h4>
-                            <p><em>Motivated PHP and Laravel Developer with
-                                    <strong>{{ $experienceData['totalExp'] }}</strong> of
-                                    experience
-                                    (including freelance),
-                                    focused on delivering robust and maintainable web applications. Skilled in backend
-                                    development, debugging, third-party integration, and team collaboration.</em></p>
-                            <ul>
-                                <li>{{ $personalInfo->location ?? 'Delhi' }}, India</li>
-                                <li>{{ $personalInfo->mobile ?? '+91-8650163913' }}</li>
-                                <li>{{ $personalInfo->email ?? 'avinash8564kumar@gmail.com' }}</li>
-                            </ul>
-                        </div>
-
-                        <h3 class="resume-title">Education</h3>
-
-                        @if (isset($educations) && count($educations) > 0)
-                            @foreach ($educations as $education)
-                                <div class="resume-item">
-                                    <h4>{{ $education->cource }} -
-                                        ({{ $education->specialization }})
-                                    </h4>
-                                    <h5>
-                                        {{ \Carbon\Carbon::parse($education->from_date)->format('Y') }}
-                                        –
-                                        {{ $education->to_date ? \Carbon\Carbon::parse($education->to_date)->format('Y') : 'Present' }}
-                                    </h5>
-                                    <p><em>{{ $education->collage_name ?? '' }}</em></p>
-                                    <p>{!! $education->description ?? '' !!}</p>
-                                    <p><strong>Mini Project:</strong> {{ $education->mini_project }}</p>
-                                    <p><strong>Major Project:</strong> {{ $education->major_project }}</p>
-                                </div>
-                            @endforeach
-                        @else
-                            <div class="resume-item">
-                                <p>No education records found.</p>
-                            </div>
+                    <div class="edu-projects">
+                        @if (!empty($education->mini_project))
+                            <div class="edu-proj"><strong>Mini Project:</strong> {{ $education->mini_project }}</div>
+                        @endif
+                        @if (!empty($education->major_project))
+                            <div class="edu-proj"><strong>Major Project:</strong> {{ $education->major_project }}</div>
                         @endif
                     </div>
+                </div>
+            @empty
+                <p class="about-text">No education records yet.</p>
+            @endforelse
+        </div>
+        </div>
+    </section>
 
-                    <!-- Experience -->
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                        <h3 class="resume-title">Professional Experience</h3>
-                        @if (isset($experiences) && count($experiences) > 0)
-                            @foreach ($experiences as $experience)
-                                <div class="resume-item">
-                                    @if ($experience->company === 'NA')
-                                        <h4>{{ $experience->title }}</h4>
-                                    @else
-                                        <h4>{{ $experience->title }} - {{ $experience->company }}</h4>
-                                    @endif
-                                    <h5>
-                                        {{ \Carbon\Carbon::parse($experience->from_date)->format('M Y') }} –
-                                        {{ $experience->to_date ? \Carbon\Carbon::parse($experience->to_date)->format('M Y') : 'Present' }}
-                                    </h5>
-
-                                    <p><em>{{ $experience->location }}</em></p>
-                                    {!! $experience->description !!}
-                                </div>
-                            @endforeach
+    <section id="portfolio">
+        <div class="container">
+        <div class="section-header fade-up">
+            <span class="section-tag">// 05. portfolio</span>
+            <h2 class="section-title">Featured <span>Projects</span></h2>
+            <div class="section-line"></div>
+        </div>
+        @if (isset($projects) && count($projects) > 0)
+            <div class="portfolio-filter fade-up">
+                <button type="button" class="filter-btn active" data-filter="all">All</button>
+                @foreach ($services ?? [] as $svc)
+                    <button type="button" class="filter-btn"
+                        data-filter="{{ \Illuminate\Support\Str::slug($svc->title) }}">{{ $svc->title }}</button>
+                @endforeach
+            </div>
+            <div class="projects-grid">
+                @foreach ($projects as $project)
+                    @php
+                        $svcTitle = optional($project->service)->title;
+                        $filterSlug = $svcTitle ? \Illuminate\Support\Str::slug($svcTitle) : 'general';
+                    @endphp
+                    <a href="{{ route('projectDetails', ['ref' => \App\Support\ProjectRef::encode($project->id)]) }}"
+                        class="project-card fade-up"
+                        data-category="{{ $filterSlug }}">
+                        @if (!empty($project->thumbnail))
+                            <img src="{{ asset($project->thumbnail) }}" alt="{{ $project->project_name }}"
+                                class="project-img" loading="lazy">
+                            <div class="project-overlay"></div>
                         @else
-                            <div class="resume-item">
-                                <p>I am a fresher.</p>
+                            <div
+                                style="height:180px;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--glass-border);background:linear-gradient(135deg,var(--dark3),rgba(0,245,212,0.04))">
+                                <div style="text-align:center;color:var(--muted)">
+                                    <div style="font-size:2.5rem;margin-bottom:0.5rem">📁</div>
+                                    <div style="font-family:'JetBrains Mono',monospace;font-size:0.75rem">Project</div>
+                                </div>
                             </div>
                         @endif
-                    </div>
-                </div>
+                        <div class="project-body">
+                            <div class="project-title">{{ $project->project_name }}</div>
+                            <div class="project-desc">{{ \Illuminate\Support\Str::limit(strip_tags($project->description ?? ''), 160) }}
+                            </div>
+                            @if ($svcTitle)
+                                <span class="project-type">{{ $svcTitle }}</span>
+                            @endif
+                        </div>
+                    </a>
+                @endforeach
             </div>
-        </section>
+        @else
+            <p class="about-text fade-up">No projects available yet.</p>
+        @endif
+        </div>
+    </section>
 
-        <section id="portfolio" class="portfolio section light-background">
-            <div class="container section-title" data-aos="fade-up">
-                <h2>Portfolio</h2>
-                <p>
-                    Explore some of the professional projects I’ve worked on — including custom websites, ERP systems, real
-                    estate platforms, and Android applications. Each project showcases my skills in frontend and backend
-                    development, user experience, and performance optimization.
+    <section id="services">
+        <div class="container">
+        <div class="section-header fade-up">
+            <span class="section-tag">// 06. what_i_do</span>
+            <h2 class="section-title">Services I <span>Offer</span></h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="services-grid">
+            @forelse ($services ?? [] as $service)
+                <div class="service-card fade-up">
+                    <div class="service-icon">
+                        <img src="{{ asset($service->icon) }}" alt="">
+                    </div>
+                    <div class="service-title">{{ $service->title }}</div>
+                    <div class="service-desc">{{ $service->description }}</div>
+                </div>
+            @empty
+                <p class="about-text" style="grid-column:1/-1">No services listed yet.</p>
+            @endforelse
+        </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+        <div class="section-header fade-up">
+            <span class="section-tag">// 07. contact_me</span>
+            <h2 class="section-title">Let's <span>Connect</span></h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="contact-grid">
+            <div class="fade-up">
+                <p style="color:var(--muted);font-size:1rem;line-height:1.8;margin-bottom:0.5rem">
+                    Got a project in mind, a role to fill, or just want to say hi? I'm
+                    always open to interesting conversations and exciting opportunities.
                 </p>
-            </div>
-            <div class="container">
-                <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
-                    <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
-                        <li data-filter="*" class="filter-active">All</li>
-                        <li data-filter=".filter-app">App</li>
-                        <li data-filter=".filter-product">Product</li>
-                        <li data-filter=".filter-branding">Branding</li>
-                        <li data-filter=".filter-books">Books</li>
-                    </ul>
-                    <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
-                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-                            <div class="portfolio-content h-100">
-                                <img src="{{ URL::asset('assets/img/portfolio/app-1.jpg') }}" class="img-fluid"
-                                    alt="">
-                                <div class="portfolio-info">
-                                    <h4>App 1</h4>
-                                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                    <a href="{{ URL::asset('assets/img/portfolio/app-1.jpg') }}" title="App 1"
-                                        data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i
-                                            class="bi bi-zoom-in"></i></a>
-                                    <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                                            class="bi bi-link-45deg"></i></a>
-                                </div>
-                            </div>
+                <div class="contact-info-list">
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-text">
+                            <p>Location</p>
+                            <p>{{ $personalInfo->location ?? 'Noida' }}, Uttar Pradesh, India</p>
                         </div>
-                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-                            <div class="portfolio-content h-100">
-                                <img src="{{ URL::asset('assets/img/portfolio/product-1.jpg') }}" class="img-fluid"
-                                    alt="">
-                                <div class="portfolio-info">
-                                    <h4>Product 1</h4>
-                                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                    <a href="{{ URL::asset('assets/img/portfolio/product-1.jpg') }}" title="Product 1"
-                                        data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i
-                                            class="bi bi-zoom-in"></i></a>
-                                    <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                                            class="bi bi-link-45deg"></i></a>
-                                </div>
-                            </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-text">
+                            <p>Phone</p>
+                            <p>{{ $personalInfo->mobile ?? '+91 8650163913' }}</p>
                         </div>
-                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-                            <div class="portfolio-content h-100">
-                                <img src="{{ URL::asset('assets/img/portfolio/branding-1.jpg') }}" class="img-fluid"
-                                    alt="">
-                                <div class="portfolio-info">
-                                    <h4>Branding 1</h4>
-                                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                    <a href="{{ URL::asset('assets/img/portfolio/branding-1.jpg') }}" title="Branding 1"
-                                        data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i
-                                            class="bi bi-zoom-in"></i></a>
-                                    <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                                            class="bi bi-link-45deg"></i></a>
-                                </div>
-                            </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div class="contact-text">
+                            <p>Email</p>
+                            <p>{{ $personalInfo->email ?? 'avinashchaurasiya@zohomail.in' }}</p>
                         </div>
-                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
-                            <div class="portfolio-content h-100">
-                                <img src="{{ URL::asset('assets/img/portfolio/books-1.jpg') }}" class="img-fluid"
-                                    alt="">
-                                <div class="portfolio-info">
-                                    <h4>Books 1</h4>
-                                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                    <a href="{{ URL::asset('assets/img/portfolio/books-1.jpg') }}" title="Branding 1"
-                                        data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i
-                                            class="bi bi-zoom-in"></i></a>
-                                    <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                                            class="bi bi-link-45deg"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-                            <div class="portfolio-content h-100">
-                                <img src="{{ URL::asset('assets/img/portfolio/app-2.jpg') }}" class="img-fluid"
-                                    alt="">
-                                <div class="portfolio-info">
-                                    <h4>App 2</h4>
-                                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                    <a href="{{ URL::asset('assets/img/portfolio/app-2.jpg') }}" title="App 2"
-                                        data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i
-                                            class="bi bi-zoom-in"></i></a>
-                                    <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                                            class="bi bi-link-45deg"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-                            <div class="portfolio-content h-100">
-                                <img src="{{ URL::asset('assets/img/portfolio/product-2.jpg') }}" class="img-fluid"
-                                    alt="">
-                                <div class="portfolio-info">
-                                    <h4>Product 2</h4>
-                                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                    <a href="{{ URL::asset('assets/img/portfolio/product-2.jpg') }}" title="Product 2"
-                                        data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i
-                                            class="bi bi-zoom-in"></i></a>
-                                    <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                                            class="bi bi-link-45deg"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-                            <div class="portfolio-content h-100">
-                                <img src="{{ URL::asset('assets/img/portfolio/branding-2.jpg') }}" class="img-fluid"
-                                    alt="">
-                                <div class="portfolio-info">
-                                    <h4>Branding 2</h4>
-                                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                    <a href="{{ URL::asset('assets/img/portfolio/branding-2.jpg') }}" title="Branding 2"
-                                        data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i
-                                            class="bi bi-zoom-in"></i></a>
-                                    <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                                            class="bi bi-link-45deg"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
-                            <div class="portfolio-content h-100">
-                                <img src="{{ URL::asset('assets/img/portfolio/books-2.jpg') }}" class="img-fluid"
-                                    alt="">
-                                <div class="portfolio-info">
-                                    <h4>Books 2</h4>
-                                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                    <a href="{{ URL::asset('assets/img/portfolio/books-2.jpg') }}" title="Branding 2"
-                                        data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i
-                                            class="bi bi-zoom-in"></i></a>
-                                    <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                                            class="bi bi-link-45deg"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-                            <div class="portfolio-content h-100">
-                                <img src="{{ URL::asset('assets/img/portfolio/app-3.jpg') }}" class="img-fluid"
-                                    alt="">
-                                <div class="portfolio-info">
-                                    <h4>App 3</h4>
-                                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                    <a href="{{ URL::asset('assets/img/portfolio/app-3.jpg') }}" title="App 3"
-                                        data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i
-                                            class="bi bi-zoom-in"></i></a>
-                                    <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                                            class="bi bi-link-45deg"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-                            <div class="portfolio-content h-100">
-                                <img src="{{ URL::asset('assets/img/portfolio/product-3.jpg') }}" class="img-fluid"
-                                    alt="">
-                                <div class="portfolio-info">
-                                    <h4>Product 3</h4>
-                                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                    <a href="{{ URL::asset('assets/img/portfolio/product-3.jpg') }}" title="Product 3"
-                                        data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i
-                                            class="bi bi-zoom-in"></i></a>
-                                    <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                                            class="bi bi-link-45deg"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-                            <div class="portfolio-content h-100">
-                                <img src="{{ URL::asset('assets/img/portfolio/branding-3.jpg') }}" class="img-fluid"
-                                    alt="">
-                                <div class="portfolio-info">
-                                    <h4>Branding 3</h4>
-                                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                    <a href="{{ URL::asset('assets/img/portfolio/branding-3.jpg') }}" title="Branding 2"
-                                        data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i
-                                            class="bi bi-zoom-in"></i></a>
-                                    <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                                            class="bi bi-link-45deg"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
-                            <div class="portfolio-content h-100">
-                                <img src="{{ URL::asset('assets/img/portfolio/books-3.jpg') }}" class="img-fluid"
-                                    alt="">
-                                <div class="portfolio-info">
-                                    <h4>Books 3</h4>
-                                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                    <a href="{{ URL::asset('assets/img/portfolio/books-3.jpg') }}" title="Branding 3"
-                                        data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i
-                                            class="bi bi-zoom-in"></i></a>
-                                    <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                                            class="bi bi-link-45deg"></i></a>
-                                </div>
-                            </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🌐</div>
+                        <div class="contact-text">
+                            <p>Website</p>
+                            <p>
+                                <a href="{{ !empty($personalInfo->website) ? (\Illuminate\Support\Str::startsWith($personalInfo->website, ['http://', 'https://']) ? $personalInfo->website : 'https://' . ltrim($personalInfo->website, '/')) : 'https://z1iinnovation.com' }}"
+                                    style="color:var(--cyan);text-decoration:none" target="_blank"
+                                    rel="noopener">{{ $personalInfo->website ?? 'z1iinnovation.com' }}</a>
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-        <section id="services" class="services section">
-            <div class="container section-title" data-aos="fade-up">
-                <h2>Services</h2>
-                <p>I offer professional and reliable digital solutions to help individuals and businesses grow online. Below
-                    are the services I specialize in:</p>
-            </div>
-            <div class="container">
-                <div class="row gy-4">
-                    @if (isset($services) && count($services) > 0)
-                        @foreach ($services as $service)
-                            <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="100">
-                                <!-- Icon image from DB -->
-                                <div class="icon flex-shrink-0 me-3">
-                                    <img src="{{ URL::asset($service->icon) }}" alt="{{ $service->title }}"
-                                        style="width: 35px; height: 35px;">
-                                </div>
-                                <div>
-                                    <!-- Service Title -->
-                                    <h4 class="title">
-                                        <a href="#" class="stretched-link">{{ $service->title }}</a>
-                                    </h4>
-                                    <!-- Service Description -->
-                                    <p class="description" style="text-align:justify;">{{ $service->description }}</p>
-                                </div>
-                            </div>
-                        @endforeach
-                    @else
-                        <p class="text-center">No services available.</p>
-                    @endif
-                </div>
-
-            </div>
-        </section>
-
-        <section id="testimonials" class="testimonials section light-background">
-            <div class="container section-title" data-aos="fade-up">
-                <h2>Testimonials</h2>
-                <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-            </div>
-            <div class="container" data-aos="fade-up" data-aos-delay="100">
-                <div class="swiper init-swiper">
-                    <script type="application/json" class="swiper-config">
-                        {
-                            "loop": true,
-                            "speed": 600,
-                            "autoplay": {
-                                "delay": 5000
-                            },
-                            "slidesPerView": "auto",
-                            "pagination": {
-                                "el": ".swiper-pagination",
-                                "type": "bullets",
-                                "clickable": true
-                            },
-                            "breakpoints": {
-                                "320": {
-                                "slidesPerView": 1,
-                                "spaceBetween": 40
-                                },
-                                "1200": {
-                                "slidesPerView": 3,
-                                "spaceBetween": 1
-                                }
-                            }
-                        }
-                    </script>
-                    <div class="swiper-wrapper">
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-item">
-                                <p>
-                                    <i class="bi bi-quote quote-icon-left"></i>
-                                    <span>Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit
-                                        rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam,
-                                        risus at semper.</span>
-                                    <i class="bi bi-quote quote-icon-right"></i>
-                                </p>
-                                <img src="{{ URL::asset('assets/img/testimonials/testimonials-1.jpg') }}"
-                                    class="testimonial-img" alt="">
-                                <h3>Saul Goodman</h3>
-                                <h4>Ceo &amp; Founder</h4>
-                            </div>
-                        </div><!-- End testimonial item -->
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-item">
-                                <p>
-                                    <i class="bi bi-quote quote-icon-left"></i>
-                                    <span>Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid
-                                        malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim
-                                        culpa.</span>
-                                    <i class="bi bi-quote quote-icon-right"></i>
-                                </p>
-                                <img src="{{ URL::asset('assets/img/testimonials/testimonials-2.jpg') }}"
-                                    class="testimonial-img" alt="">
-                                <h3>Sara Wilsson</h3>
-                                <h4>Designer</h4>
-                            </div>
-                        </div><!-- End testimonial item -->
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-item">
-                                <p>
-                                    <i class="bi bi-quote quote-icon-left"></i>
-                                    <span>Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem
-                                        veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint
-                                        minim.</span>
-                                    <i class="bi bi-quote quote-icon-right"></i>
-                                </p>
-                                <img src="{{ URL::asset('assets/img/testimonials/testimonials-3.jpg') }}"
-                                    class="testimonial-img" alt="">
-                                <h3>Jena Karlis</h3>
-                                <h4>Store Owner</h4>
-                            </div>
-                        </div><!-- End testimonial item -->
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-item">
-                                <p>
-                                    <i class="bi bi-quote quote-icon-left"></i>
-                                    <span>Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim
-                                        fugiat dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore
-                                        illum veniam.</span>
-                                    <i class="bi bi-quote quote-icon-right"></i>
-                                </p>
-                                <img src="{{ URL::asset('assets/img/testimonials/testimonials-4.jpg') }}"
-                                    class="testimonial-img" alt="">
-                                <h3>Matt Brandon</h3>
-                                <h4>Freelancer</h4>
-                            </div>
-                        </div><!-- End testimonial item -->
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-item">
-                                <p>
-                                    <i class="bi bi-quote quote-icon-left"></i>
-                                    <span>Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor
-                                        noster veniam sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi
-                                        cillum quid.</span>
-                                    <i class="bi bi-quote quote-icon-right"></i>
-                                </p>
-                                <img src="{{ URL::asset('assets/img/testimonials/testimonials-5.jpg') }}"
-                                    class="testimonial-img" alt="">
-                                <h3>John Larson</h3>
-                                <h4>Entrepreneur</h4>
-                            </div>
-                        </div><!-- End testimonial item -->
-
-                    </div>
-                    <div class="swiper-pagination"></div>
-                </div>
-            </div>
-        </section>
-        <section id="contact" class="contact section">
-            <div class="container section-title" data-aos="fade-up">
-                <h2>Contact</h2>
-                <p>Have a project in mind or want to collaborate? I'm just a message away — feel free to get in touch!</p>
-            </div>
-            <div class="container" data-aos="fade-up" data-aos-delay="100">
-                <div class="row gy-4">
-                    <!-- Contact Info -->
-                    <div class="col-lg-5">
-                        <div class="info-wrap">
-                            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
-                                <i class="bi bi-geo-alt flex-shrink-0"></i>
-                                <div>
-                                    <h3>Address</h3>
-                                    <p>{{ $personalInfo->location ?? 'Delhi' }}, Uttar Pradesh, India</p>
-                                </div>
-                            </div>
-                            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
-                                <i class="bi bi-telephone flex-shrink-0"></i>
-                                <div>
-                                    <h3>Call Me</h3>
-                                    <p>{{ $personalInfo->mobile ?? '+91 8650163913' }}</p>
-                                </div>
-                            </div>
-                            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
-                                <i class="bi bi-envelope flex-shrink-0"></i>
-                                <div>
-                                    <h3>Email Me</h3>
-                                    <p>{{ $personalInfo->email ?? 'avinash8564kumar@gmail.com' }}</p>
-                                </div>
-                            </div>
+            <div class="contact-form fade-up">
+                <form action="{{ route('contactFormSave') }}" method="post" id="php-email-form">
+                    @csrf
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="pf-name">Your Name</label>
+                            <input id="pf-name" type="text" name="name" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pf-email">Your Email</label>
+                            <input id="pf-email" type="email" name="email" placeholder="john@company.com" required>
                         </div>
                     </div>
-
-                    <!-- Contact Form -->
-                    <div class="col-lg-7">
-                        <form action="{{ route('contactFormSave') }}" method="post" id="php-email-form"
-                            data-aos="fade-up" data-aos-delay="200">
-                            @csrf
-                            <div class="row gy-4">
-                                <div class="col-md-4">
-                                    <label for="name-field" class="pb-2">Your Name</label>
-                                    <input type="text" name="name" id="name-field" class="form-control">
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="email-field" class="pb-2">Your Email</label>
-                                    <input type="email" class="form-control" name="email" id="email-field">
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="phone-field" class="pb-2">Your Phone</label>
-                                    <input type="text" class="form-control" name="phone" id="phone-field">
-                                </div>
-                                <div class="col-md-12">
-                                    <label for="subject-field" class="pb-2">Subject</label>
-                                    <input type="text" class="form-control" name="subject" id="subject-field">
-                                </div>
-                                <div class="col-md-12">
-                                    <label for="message-field" class="pb-2">Message</label>
-                                    <textarea class="form-control" name="message" rows="7" id="message-field"></textarea>
-                                </div>
-                                <div class="col-md-12 text-center">
-                                    <button type="submit">Send Message</button>
-                                </div>
-                            </div>
-                        </form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="pf-phone">Phone</label>
+                            <input id="pf-phone" type="tel" name="phone" placeholder="+91 XXXXX XXXXX" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pf-subject">Subject</label>
+                            <input id="pf-subject" type="text" name="subject" placeholder="Project Discussion" required>
+                        </div>
                     </div>
-                </div>
+                    <div class="form-group">
+                        <label for="pf-message">Message</label>
+                        <textarea id="pf-message" name="message" placeholder="Tell me about your project, role, or idea..."
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message →</button>
+                </form>
             </div>
-        </section>
-    </main>
+        </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+        <p style="margin-bottom:0.5rem">
+            <span style="font-size:1.1rem">⌨️</span> &nbsp; Designed &amp;
+            Developed by
+            <a href="https://z1iinnovation.com" target="_blank" rel="noopener">{{ $fullName }}</a> &nbsp;|&nbsp;
+            <a href="https://z1iinnovation.com" target="_blank" rel="noopener">Z1i Innovations</a>
+        </p>
+        <p style="margin-top:0.4rem;opacity:0.5">© {{ date('Y') }} All Rights Reserved</p>
+        </div>
+    </footer>
 @endsection

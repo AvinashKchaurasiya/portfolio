@@ -1,18 +1,32 @@
-@extends('layout.baseApp')
-@section('content')
-    <main class="main">
-        <section id="hero" class="hero section dark-background">
+@extends('layout.portfolio')
 
-            <img src="{{ URL::asset('assets/img/hero-bg.png') }}" alt="" data-aos="fade-in" class="">
-            <div class="container" data-aos="fade-up" data-aos-delay="100">
-                <div class="row px-4">
-                    <div class="col-md-8 ">
-                        <h2>Thank You!</h2>
-                        <p>Thank you for contacting us! We will get back to you shortly.</p>
-                        <a href="{{ route('home') }}" class="btn btn-light">Go Back to Home</a>
-                    </div>
-                </div>
+@section('content')
+    @include('layout.partials.portfolio-chrome')
+
+    <div class="pf-inner">
+        <div class="container">
+        <div class="pf-panel thank-wrap fade-up">
+            <div class="thank-icon" aria-hidden="true">✓</div>
+            <h1 class="thank-title">Thank <span>You</span></h1>
+            <p class="thank-text">
+                Thank you for reaching out. Your message is on its way — I will get back to you as soon as I can.
+            </p>
+            <div class="hero-btns" style="justify-content:center">
+                <a href="{{ route('home') }}" class="btn-primary">Back to home</a>
+                <a href="{{ route('home') }}#contact" class="btn-ghost">Send another message</a>
             </div>
-        </section>
-    </main>
+        </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+        <p style="margin-bottom:0.5rem">
+            <span style="font-size:1.1rem">⌨️</span> &nbsp; Designed &amp; Developed by
+            <a href="https://z1iinnovation.com" target="_blank" rel="noopener">Avinash Kumar</a> &nbsp;|&nbsp;
+            <a href="https://z1iinnovation.com" target="_blank" rel="noopener">Z1i Innovations</a>
+        </p>
+        <p style="margin-top:0.4rem;opacity:0.5">© {{ date('Y') }} All Rights Reserved</p>
+        </div>
+    </footer>
 @endsection

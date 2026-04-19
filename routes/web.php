@@ -1,5 +1,4 @@
 <?php
-
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\ContactController as AdminContactController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -93,4 +92,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 // frontend routes
 Route::get("/", [HomeController::class, "index"])->name("home");
 Route::post("contact-form-save", [ContactController::class, "contactFormSave"])->name("contactFormSave");
+Route::get('project-details/{ref}', [HomeController::class, 'projectDetails'])
+    ->where('ref', '[A-Za-z0-9\-_]+')
+    ->name('projectDetails');
 Route::get("thank-you", [ContactController::class, "thankYou"])->name("thankYou");

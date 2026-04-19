@@ -43,8 +43,10 @@ class ContactController extends Controller
         }
     }
 
-    public function thankYou(){
-        $data['title'] = 'Thank You';
-        return view('thankyou');
+    public function thankYou()
+    {
+        return view('thankyou', [
+            'title' => 'Thank You — Avinash Kumar',
+        ]);
     }
 }

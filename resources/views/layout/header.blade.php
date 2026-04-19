@@ -5,7 +5,7 @@
         <img src="{{ URL::asset('assets/img/about-logo.png') }}" alt="" class="img-fluid rounded-circle">
     </div>
 
-    <a href="index.html" class="logo d-flex align-items-center justify-content-center">
+    <a href="{{ URL::asset('/') }}" class="logo d-flex align-items-center justify-content-center">
         <h1 class="sitename">Avinash Kumar</h1>
     </a>
 

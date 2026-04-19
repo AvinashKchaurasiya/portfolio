@@ -1,6 +1,6 @@
 <nav class="navbar">
     <div class="navbar-left">
-        <a href="#" class="navbar-brand" style="padding-left: 1rem !important;">KaryaVahak ERP</a>
+        <a href="#" class="navbar-brand" style="padding-left: 1rem !important;">Portfolio Admin</a>
         <button id="toggleSidebar" title="Toggle Sidebar">
             <span class="material-icons">menu</span>
         </button>

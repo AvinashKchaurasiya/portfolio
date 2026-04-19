@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\ExperienceHelper;
+use App\Support\ProjectRef;
 use App\Models\Admin\Client;
 use App\Models\Admin\Education;
 use App\Models\Admin\Experince;
 use App\Models\Admin\Profile;
 use App\Models\Admin\Service;
 use App\Models\Admin\Skill;
+use App\Models\Admin\Project;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -16,7 +18,7 @@ class HomeController extends Controller
 {
     public function index(Request $request)
     {
-        $title = 'Avinash Kumar - Website Developer';
+        $title = 'Avinash Kumar — PHP Laravel Developer';
 
         // Get all skills
         $skills = Skill::all();
@@ -51,7 +53,22 @@ class HomeController extends Controller
 
         // Get all education records
         $educations = Education::orderBy('id', 'desc')->get();
+        
+        $projects = Project::with('service')->get();
 
-        return view('index', compact('title', 'skills', 'services', 'experiences','experienceData', 'totalClients', 'personalInfo', 'educations', 'latestEducation'));
+        return view('index', compact('title', 'skills', 'services', 'experiences','experienceData', 'totalClients', 'personalInfo', 'educations', 'latestEducation', 'projects'));
+    }
+    
+    public function projectDetails(string $ref)
+    {
+        $id = ProjectRef::decode($ref);
+        if ($id === null) {
+            abort(404);
+        }
+
+        $title = 'Project Details';
+        $project = Project::with('service')->findOrFail($id);
+
+        return view('project-details', compact('title', 'project'));
     }
 }
