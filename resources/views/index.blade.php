@@ -396,6 +396,7 @@
                     Got a project in mind, a role to fill, or just want to say hi? I'm
                     always open to interesting conversations and exciting opportunities.
                 </p>
+<<<<<<< HEAD
                 <div class="contact-info-list">
                     <div class="contact-item">
                         <div class="contact-icon">📍</div>
@@ -428,6 +429,62 @@
                                     rel="noopener">{{ $personalInfo->website ?? 'z1iinnovation.com' }}</a>
                             </p>
                         </div>
+=======
+            </div>
+            <div class="container">
+                <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+                    @if (isset($projects) && count($projects) > 0)
+                        <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
+                            <li data-filter="*" class="filter-active">All</li>
+                            @foreach ($services as $service1)
+                                @php
+                                    $title = $service1->title;
+                                    $filterClass = $title ? 'filter-' . strtolower(explode(' ', $title)[0]) : '';
+                                @endphp
+                                <li data-filter=".{{ $filterClass }}">
+                                    {{ $service1->title ?? '' }}
+                                </li>
+                            @endforeach
+                        </ul>
+                    @else
+                        <p class="text-center">No projects available.</p>
+                    @endif
+                    <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+                        @if (isset($projects) && count($projects) > 0)
+                            @foreach ($projects as $project)
+                                @php
+                                    $title = optional($project->service)->title;
+                                    $filterClass = $title ? 'filter-' . strtolower(explode(' ', $title)[0]) : '';
+                                @endphp
+
+                                <div class="col-lg-4 col-md-6 portfolio-item isotope-item {{ $filterClass }}">
+                                    <div class="portfolio-content h-100">
+                                        <div
+                                            style="width: 100%; height: 250px; overflow: hidden; display: flex; align-items: center; justify-content: center; background-color: #f9f9f9;">
+                                            <img src="{{ URL::asset($project->thumbnail) }}" class="img-fluid"
+                                                alt="{{ $project->project_name }}"
+                                                style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                        </div>
+                                        <div class="portfolio-info">
+                                            <h4>{{ $project->project_name }}</h4>
+                                            <p>{{ $project->project_name }}</p>
+                                            <a href="{{ URL::asset($project->thumbnail) }}"
+                                                title="{{ $project->project_name }}"
+                                                data-gallery="portfolio-gallery-website" class="glightbox preview-link">
+                                                <i class="bi bi-zoom-in"></i>
+                                            </a>
+                                            <a href="{{ route('projectDetails', $project->id) }}" title="More Details"
+                                                class="details-link"><i class="bi bi-link-45deg"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        @else
+                            <div class="col-12">
+                                <p>No projects available.</p>
+                            </div>
+                        @endif
+>>>>>>> f03ab99d2f04a740cc347d701bb0af6c522d03c7
                     </div>
                 </div>
             </div>
